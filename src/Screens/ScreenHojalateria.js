@@ -1,16 +1,16 @@
-import { Cards } from "./Cards-servicios";
-import cristales from "./assets/cristales.jpg";
-import bujes from "./assets/bujes.jpg";
-import pernos from "./assets/pernos.jpg";
-import chasis from "./assets/chasis.jpg";
-import chapas from "./assets/chapas.jpg";
-import manijas from "./assets/manijas.jpg";
-import elevadores from "./assets/elevadores.jpg";
-import secciones from "./assets/seccionesdañadas.jpg";
+import { Cards } from "../Cards-servicios";
+import cristales from "../assets/cristales.jpg";
+import bujes from "../assets/bujes.jpg";
+import pernos from "../assets/pernos.jpg";
+import chasis from "../assets/chasis.jpg";
+import chapas from "../assets/chapas.jpg";
+import manijas from "../assets/manijas.jpg";
+import elevadores from "../assets/elevadores.jpg";
+import secciones from "../assets/seccionesdañadas1.jpeg";
 export const ScreenHojalateria = () => {
   return (
     <body>
-      <h1 style={{ color: "violet", textAlign: "center", marginTop: "20px" }}>
+      <h1 style={{ color: "blue", textAlign: "center", marginTop: "20px" }}>
         ¡Servicios de hojalateria!
       </h1>
       <div
@@ -81,7 +81,7 @@ export const ScreenHojalateria = () => {
         />
         <Cards
           imagenServicio={secciones}
-          servicio={"Cambio de secciones dañadas"}
+          servicio={"Secciones dañadas"}
           descripcion={
             "Ofrecemos un servicio muy amplio de pintura para todo tipo de auto"
           }

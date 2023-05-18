@@ -1,4 +1,4 @@
-import "./mision.css";
+import "../mision.css";
 export const Mision = ({ mision, texto, imagen }) => {
   return (
     <div className="container-mision">

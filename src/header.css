@@ -12,18 +12,20 @@
 }
 .logo .c {
   color: blue;
-  font-size: 23px;
-  font-family: cursive;
+  font-size: 30px;
+  text-shadow: 4px -3px 2px rgba(24, 67, 222, 0.6);
 }
 .logo .f {
   color: green;
-  font-size: 23px;
-  font-family: cursive;
+  font-size: 30px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  text-shadow: 4px -3px 2px rgba(19, 82, 37, 0.6);
 }
 .logo .i {
   color: red;
-  font-size: 23px;
-  font-family: cursive;
+  font-size: 30px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  text-shadow: 4px -3px 2px rgba(222, 24, 24, 0.6);
 }
 .container-button {
   margin-top: 20px;

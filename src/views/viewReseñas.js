@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import "./reseñas.css";
+import "../reseñas.css";
 
 export const Reseñas = () => {
   const [comentario, setComentario] = useState("");

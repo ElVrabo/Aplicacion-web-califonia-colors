@@ -1,5 +1,5 @@
-import "./Promociones.css";
-import { promociones } from "./AgregarPromociones";
+import "../Promociones.css";
+import { promociones } from "../components/formPromociones";
 export const Promociones = () => {
   const promocionesRender = promociones.map((e) => (
     <div className="card" style={{ width: "18rem" }}>

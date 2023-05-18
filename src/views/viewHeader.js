@@ -1,6 +1,5 @@
-import "./header.css";
-import { Promociones } from "./Promociones";
-
+import "../header.css";
+import { Vision } from "../views/viewVision";
 export const Header = ({ titulo, parrafo }) => {
   return (
     <div className="container-padre">
@@ -25,7 +24,7 @@ export const Header = ({ titulo, parrafo }) => {
       <div className="container-about">
         <h2>{titulo}</h2>
         <p>{parrafo}</p>
-        <ButtonExplorar texto="Explorar" referencia="#promociones" />
+        <ButtonExplorar texto="Explorar" referencia="#explorar" />
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import "./admin.css";
+import "../admin.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   BrowserRouter as Router,
@@ -10,7 +10,8 @@ import {
 export function Admin() {
   let [usuario, setUsuario] = useState("");
   let [password, setPassword] = useState("");
-  let inputs = useRef();
+  let inputUser = useRef();
+  let inputPassword = useRef();
   /*se crea una referencia del hook useNavigete */
   const navigate = useNavigate();
   const handleEmail = (e) => {
@@ -33,7 +34,7 @@ export function Admin() {
                   <ion-icon name="mail-outline"></ion-icon>
                   <input
                     defaultValue={""}
-                    ref={inputs}
+                    ref={inputUser}
                     onChange={handleEmail}
                     type="email"
                     required
@@ -44,6 +45,7 @@ export function Admin() {
                 <div className="inputbox">
                   <ion-icon name="lock-closed-outline"></ion-icon>
                   <input
+                    ref={inputPassword}
                     defaultValue={""}
                     onChange={handlePassword}
                     type="password"
@@ -56,7 +58,10 @@ export function Admin() {
                   onClick={() => {
                     if (usuario && password) {
                       navigate("/agregar");
-                      inputs.current.value = "";
+                      inputUser.current.value = "";
+                      inputPassword.current.value = "";
+                    } else {
+                      alert("rellena los campos con la informacion correcta");
                     }
                   }}
                 >
@@ -80,6 +85,3 @@ export function Admin() {
     </body>
   );
 }
-
-export const Datos = [];
-console.log(Datos);

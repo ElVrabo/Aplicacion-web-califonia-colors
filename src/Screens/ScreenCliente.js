@@ -1,19 +1,20 @@
-import "./App.css";
+import "../App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Link } from "react-router-dom";
-import { Vision } from "./Vision";
-import { Mision, Valores } from "./Mision";
-import { Promociones } from "./Promociones";
-import { Header } from "./Header";
+import { Vision } from "../views/viewVision";
+import { Mision, Valores } from "../views/viewMision";
+import { Promociones } from "../views/viewPromociones";
+import { Header } from "../views/viewHeader";
 import { useFirebaseApp } from "reactfire"; /*funciona para acceder a la api completa de firebase*/
-import { CardsServicios } from "./Cards-servicios";
-import hojalateria from "./assets/hojalateria.jpg";
-import tapiceria from "./assets/tapiceria.jpg";
-import electrico from "./assets/electrico.jpg";
-import pintura from "./assets/pintura.jpg";
-import mecanica from "./assets/mecanica.jpg";
-import { Reseñas } from "./Reseñas";
-import { Slider } from "./Slider";
+import { CardsServicios } from "../Cards-servicios";
+import hojalateria from "../assets/hojalateria.jpeg";
+import tapiceria from "../assets/tapiceria.jpeg";
+import electrico from "../assets/electrico.jpg";
+import pintura from "../assets/pintura.jpeg";
+import mecanica from "../assets/mecanica.jpg";
+import { Reseñas } from "../views/viewReseñas";
+
+import { ApartadoTrabajos } from "../views/viewTrabajos";
 
 /*rfc funciona como atajo para crear un nuevo componente*/
 
@@ -31,10 +32,10 @@ export function App() {
           marginTop: "35px",
         }}
       >
-        <a href="#">Nosotros</a>
         <a href="#promociones">Promociones</a>
-        <a href="#catalogo">Catalogo de servicios</a>
-        <a href="">Comentarios</a>
+        <a href="#servicios">Catalogo de servicios</a>
+        <a href="#empleos">¿Buscas empleo?</a>
+        <a href="#comentarios">Comentarios</a>
         <a href="">Contacto</a>
         <div
           className="container-admin"
@@ -54,7 +55,7 @@ export function App() {
       {/* <Slider /> */}
       <Header
         titulo="¿Quienes somos?"
-        parrafo="Somos una empresa tlaxcalteca, cuyo objetivo y compromiso es otorgar servicios de calidad, ya que nuestra preparacion, conocimiento y experiencia nos avalan para atender las necesidades del cliente. Iniciamos nuestras actividades en el año 1994, ofreciendo servicios competitivos dentro del mercado, generando fuentes de empleo para coadyuvar a la economia del estado."
+        parrafo="Somos una empresa tlaxcalteca, cuyo objetivo y compromiso es otorgar servicios de calidad, ya que nuestra preparacion, conocimiento y experiencia nos avalan para atender las necesidades del cliente. Iniciamos nuestras actividades en el año 1994, ofreciendo servicios competitivos dentro del mercado, generando fuentes de empleo para coadyuvar a la economia del estado. Atentido personalmente por tus servidores Jesus Hernandez Hernandez y Felix Hernandez Lopez. "
       />
 
       <Vision
@@ -72,11 +73,17 @@ export function App() {
         valores="Nuestros valores"
         texto="Somos una empresa que cumple en tiempo y forma con las necesidades de cada uno de nuestros clientes, sabemos trabajar de manera muy honesta garantizando la buena calidad del trabajo al igual que todas las herramientas utilizadas. Nos dirigimos a nuestros clientes de manera equitativa y respetuosa. ¡Somos leales ante nuestros socios comerciales, empleados y accionistas!"
       />
-      <h1 style={{ color: "blue", textAlign: "center", marginTop: "50px" }}>
+      <h1
+        id="promociones"
+        style={{ color: "blue", textAlign: "center", marginTop: "50px" }}
+      >
         Promociones
       </h1>
       <Promociones />
-      <h1 style={{ color: "blue", textAlign: "center", marginTop: "50px" }}>
+      <h1
+        id="servicios"
+        style={{ color: "blue", textAlign: "center", marginTop: "50px" }}
+      >
         Servicios que ofrecemos
       </h1>
       <div
@@ -90,38 +97,48 @@ export function App() {
         }}
       >
         <CardsServicios
-          icono={hojalateria}
+          imagen={hojalateria}
           referencia="#"
           servicio="Hojalateria"
           descripcion="Servicio de hojalateria"
           refe="/hojalateria"
         />
         <CardsServicios
-          icono={tapiceria}
+          imagen={tapiceria}
           referencia="#"
           servicio="Tapiceria"
           descripcion="Servicio de tapiceria"
         />
         <CardsServicios
-          icono={electrico}
+          imagen={electrico}
           referencia="#"
           servicio="Electrico"
           descripcion="Servicio electrico"
         />
         <CardsServicios
-          icono={pintura}
+          imagen={pintura}
           referencia="#"
           servicio="Pintura"
           descripcion="Servicio de pintura"
         />
         <CardsServicios
-          icono={mecanica}
+          imagen={mecanica}
           referencia="#"
           servicio="Mecanica"
           descripcion="Servicio de mecanica"
         />
       </div>
-      <h1 style={{ color: "blue", textAlign: "center", marginTop: "50px" }}>
+      <div
+        id="empleos"
+        className="seccion-empleos"
+        style={{ marginTop: "60px" }}
+      >
+        <ApartadoTrabajos />
+      </div>
+      <h1
+        id="comentarios"
+        style={{ color: "blue", textAlign: "center", marginTop: "50px" }}
+      >
         Comentarios de nuestros clientes
       </h1>
       <Reseñas />

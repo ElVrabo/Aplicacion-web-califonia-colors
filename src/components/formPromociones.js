@@ -1,9 +1,8 @@
 import { useRef, useState } from "react";
-import "./agregarpromociones.css";
+import "../agregarpromociones.css";
 import { useNavigate } from "react-router-dom";
-import { Trabajos } from "./Trabajos";
-export const AgregarPromociones = () => {
-  const navigete = useNavigate();
+
+export const FormPromociones = () => {
   const [imagen, setImagen] = useState("");
   let [titulo, setTitulo] = useState("");
   let [descripcion, setDescripcion] = useState("");
@@ -11,10 +10,10 @@ export const AgregarPromociones = () => {
   let inputTitulo = useRef();
   let inputDescripcion = useRef();
   let inputPrecio = useRef();
+  const navigete = useNavigate();
 
   return (
     <>
-      <h1>¡Agrega tus promociones!</h1>
       <div className="form-agregar">
         <label htmlFor="imagen">Añade una imagen:</label>
         <input
@@ -103,7 +102,6 @@ export const AgregarPromociones = () => {
           Eliminar todas las promociones
         </button>
       </div>
-      <Trabajos titulo="¡Busca un empleado!" />
     </>
   );
 };

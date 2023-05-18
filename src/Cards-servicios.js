@@ -20,11 +20,11 @@ export const Cards = ({ imagenServicio, servicio, descripcion, funcion }) => {
   );
 };
 
-export const CardsServicios = ({ icono, servicio, descripcion, refe }) => {
+export const CardsServicios = ({ imagen, servicio, descripcion, refe }) => {
   return (
     <div className="catalogo-servicios">
       <div className="body-catalogo">
-        <img src={icono} alt="" />
+        <img src={imagen} alt="" />
         <h2>{servicio}</h2>
         <p>{descripcion}</p>
         <div className="btn-ver">

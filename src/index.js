@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import { App } from "./App";
+import { App } from "./Screens/ScreenCliente";
 import reportWebVitals from "./reportWebVitals";
 import {
   BrowserRouter as Router,
@@ -11,11 +11,11 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import { Admin } from "./Admin";
+import { Admin } from "./components/formAdmin";
 import { FirebaseAppProvider } from "reactfire"; /*se importa el provedor de firebase para poder hacer uso de los servicios que nos ofrece*/
 import firebaseConfig from "./firebase-config"; /*Se importa la configuracion de firebase que esta en el archivo firebase-config.js*/
-import { ScreenHojalateria } from "./ScreenHojalateria";
-import { AgregarPromociones } from "./AgregarPromociones";
+import { ScreenHojalateria } from "./Screens/ScreenHojalateria";
+import { ViewAdmin } from "./views/viewAdmin";
 /*Creando rutas con react-router-dom*/
 export const router = createBrowserRouter([
   {
@@ -32,7 +32,7 @@ export const router = createBrowserRouter([
   },
   {
     path: "/agregar",
-    element: <AgregarPromociones />,
+    element: <ViewAdmin />,
   },
   {
     path: "/inicio",
