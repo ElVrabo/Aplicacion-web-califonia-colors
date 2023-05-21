@@ -13,6 +13,7 @@ import electrico from "../assets/electrico.jpg";
 import pintura from "../assets/pintura.jpeg";
 import mecanica from "../assets/mecanica.jpg";
 import { Reseñas } from "../views/viewReseñas";
+import { Contacto } from "../components/Contacto";
 
 import { ApartadoTrabajos } from "../views/viewTrabajos";
 
@@ -142,6 +143,7 @@ export function App() {
         Comentarios de nuestros clientes
       </h1>
       <Reseñas />
+      <Contacto seccion="¡Contactanos!" />
     </body>
   );
 }

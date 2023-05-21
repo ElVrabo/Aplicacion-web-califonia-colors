@@ -1,0 +1,19 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.form input {
+  width: 600px;
+}
+.form textarea {
+  width: 600px;
+  height: 100px;
+}
+.send {
+  background-color: blue;
+  color: white;
+  border-radius: 10px;
+  border: 1px solid black;
+}

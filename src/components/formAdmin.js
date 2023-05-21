@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "../admin.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
@@ -10,8 +10,7 @@ import {
 export function Admin() {
   let [usuario, setUsuario] = useState("");
   let [password, setPassword] = useState("");
-  let inputUser = useRef();
-  let inputPassword = useRef();
+
   /*se crea una referencia del hook useNavigete */
   const navigate = useNavigate();
   const handleEmail = (e) => {
@@ -19,6 +18,14 @@ export function Admin() {
   };
   const handlePassword = (e) => {
     setPassword(e.target.value);
+  };
+
+  const login = () => {
+    if (usuario && password) {
+      navigate("/agregar");
+    } else {
+      alert("rellena los campos con la informacion correcta");
+    }
   };
   return (
     <body>
@@ -34,7 +41,6 @@ export function Admin() {
                   <ion-icon name="mail-outline"></ion-icon>
                   <input
                     defaultValue={""}
-                    ref={inputUser}
                     onChange={handleEmail}
                     type="email"
                     required
@@ -45,7 +51,6 @@ export function Admin() {
                 <div className="inputbox">
                   <ion-icon name="lock-closed-outline"></ion-icon>
                   <input
-                    ref={inputPassword}
                     defaultValue={""}
                     onChange={handlePassword}
                     type="password"
@@ -54,19 +59,7 @@ export function Admin() {
                   <label for="">contraseña</label>
                 </div>
 
-                <button
-                  onClick={() => {
-                    if (usuario && password) {
-                      navigate("/agregar");
-                      inputUser.current.value = "";
-                      inputPassword.current.value = "";
-                    } else {
-                      alert("rellena los campos con la informacion correcta");
-                    }
-                  }}
-                >
-                  Iniciar sesion
-                </button>
+                <button onClick={login}>Iniciar sesion</button>
                 <div className="register">
                   <p></p>
                 </div>
