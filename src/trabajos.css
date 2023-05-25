@@ -17,3 +17,40 @@
   border-radius: 10px;
   margin-top: 10px;
 }
+/*ESTILOS PARA LA CARD TRABAJOS*/
+.section-trabajos {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+.card-trabajos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+}
+.body-trabajos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.body-trabajos img {
+  border-radius: 10px;
+  width: 300px;
+  height: 200px;
+}
+.body-trabajos p {
+  text-align: justify;
+  text-align: center;
+}
+.btn-trabajos {
+  margin-top: 10px;
+  background-color: blue;
+  color: white;
+  border: 1px solid white;
+  border-radius: 10px;
+  width: 400px;
+  text-align: center;
+  text-decoration: none;
+}

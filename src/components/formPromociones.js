@@ -3,7 +3,7 @@ import "../agregarpromociones.css";
 import { useNavigate } from "react-router-dom";
 
 export const FormPromociones = () => {
-  const [imagen, setImagen] = useState("");
+  let [imagen, setImagen] = useState("");
   let [titulo, setTitulo] = useState("");
   let [descripcion, setDescripcion] = useState("");
   let [precio, setPrecio] = useState("");
@@ -30,25 +30,26 @@ export const FormPromociones = () => {
   const insertPromotion = () => {
     if (imagen && titulo && descripcion && precio) {
       let promocion = {
+        id: promociones.length,
         imagen,
         titulo,
         descripcion,
         precio,
       };
-      /*se crea un nuevo arreglo donde ...promociones contiene los elementos(objetos) del arreglo anterior y promocion es un nuevo valor (objeto) que se le agregara */
       promociones = [...promociones, promocion];
       resetInputs();
+      console.log(promociones);
     } else {
       alert("rellena los campos porfavor");
     }
   };
 
-  const deletePromotions = () => {
+  const deleteAllPromotions = () => {
     if (promociones.length == 0) {
       alert("no hay ninguna promocion por eliminar");
     } else {
       /*el metodo splice funciona para eliminar elementos de un array, se le proporciona el indice de inicio que es 0 y la cantidad de elementos que se quieren eliminar (longitud del array)*/
-      promociones.splice(0, promociones.length);
+      promociones = [];
       alert(
         "se eliminaron todas tus promociones, pulsa el boton de arriba para checar"
       );
@@ -98,7 +99,7 @@ export const FormPromociones = () => {
         >
           Visualizar promociones
         </button>
-        <button onClick={deletePromotions} className="botones">
+        <button onClick={deleteAllPromotions} className="botones">
           Eliminar todas las promociones
         </button>
       </div>

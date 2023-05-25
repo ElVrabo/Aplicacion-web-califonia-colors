@@ -80,7 +80,9 @@ export function App() {
       >
         Promociones
       </h1>
+
       <Promociones />
+
       <h1
         id="servicios"
         style={{ color: "blue", textAlign: "center", marginTop: "50px" }}
@@ -144,6 +146,7 @@ export function App() {
       </h1>
       <Reseñas />
       <Contacto seccion="¡Contactanos!" />
+      {/* <Carrito /> */}
     </body>
   );
 }
