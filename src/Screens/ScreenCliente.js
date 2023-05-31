@@ -1,11 +1,11 @@
 import "../App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Navigete, useNavigate } from "react-router-dom";
 import { Vision } from "../views/viewVision";
 import { Mision, Valores } from "../views/viewMision";
 import { Promociones } from "../views/viewPromociones";
 import { Header } from "../views/viewHeader";
-import { useFirebaseApp } from "reactfire"; /*funciona para acceder a la api completa de firebase*/
+
 import { CardsServicios } from "../Cards-servicios";
 import hojalateria from "../assets/hojalateria.jpeg";
 import tapiceria from "../assets/tapiceria.jpeg";
@@ -14,14 +14,15 @@ import pintura from "../assets/pintura.jpeg";
 import mecanica from "../assets/mecanica.jpg";
 import { Reseñas } from "../views/viewReseñas";
 import { Contacto } from "../components/Contacto";
+import { Button } from "@mui/material";
+import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 
 import { ApartadoTrabajos } from "../views/viewTrabajos";
 
 /*rfc funciona como atajo para crear un nuevo componente*/
 
 export function App() {
-  const firebase = useFirebaseApp();
-  console.log(firebase);
+  const navigete = useNavigate();
   return (
     <body>
       <nav
@@ -30,14 +31,14 @@ export function App() {
           flexWrap: "wrap",
           gap: "10px",
           justifyContent: "space-around",
-          marginTop: "35px",
+          marginTop: "30px",
         }}
       >
         <a href="#promociones">Promociones</a>
         <a href="#servicios">Catalogo de servicios</a>
         <a href="#empleos">¿Buscas empleo?</a>
         <a href="#comentarios">Comentarios</a>
-        <a href="">Contacto</a>
+        <a href="#contacto">Contacto</a>
         <div
           className="container-admin"
           style={{
@@ -48,9 +49,16 @@ export function App() {
             justifyContent: "center",
           }}
         >
-          <Link style={{ color: "white" }} to={"/admin"}>
+          <Button
+            style={{ borderRadius: "5px", backgroundColor: "blue" }}
+            onClick={() => {
+              navigete("/admin");
+            }}
+            variant="contained"
+            startIcon={<AccountCircleRoundedIcon />}
+          >
             Admin
-          </Link>
+          </Button>
         </div>
       </nav>
       {/* <Slider /> */}

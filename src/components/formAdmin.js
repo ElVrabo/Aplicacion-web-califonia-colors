@@ -1,19 +1,16 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import "../admin.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import {
-  BrowserRouter as Router,
-  Link,
-  useNavigate,
-  Navigate,
-} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
 export function Admin() {
-  let [usuario, setUsuario] = useState("");
-  let [password, setPassword] = useState("");
+  /*Este componente puede hacer uso de las variables de estado que se definieron dentro del contexto UserContext*/
+  const { usuario, setUsuario, password, setPassword } =
+    useContext(UserContext);
 
   /*se crea una referencia del hook useNavigete */
   const navigate = useNavigate();
-  const handleEmail = (e) => {
+  const handleUsuario = (e) => {
     setUsuario(e.target.value);
   };
   const handlePassword = (e) => {
@@ -28,7 +25,7 @@ export function Admin() {
     }
   };
   return (
-    <body>
+    <>
       <div className="night">
         <div className="surface"></div>
         <div className="car"></div>
@@ -41,12 +38,12 @@ export function Admin() {
                   <ion-icon name="mail-outline"></ion-icon>
                   <input
                     defaultValue={""}
-                    onChange={handleEmail}
-                    type="email"
+                    onChange={handleUsuario}
+                    type=""
                     required
                   />
 
-                  <label for="">correo</label>
+                  <label for="">Usuario</label>
                 </div>
                 <div className="inputbox">
                   <ion-icon name="lock-closed-outline"></ion-icon>
@@ -75,6 +72,6 @@ export function Admin() {
           </div>
         </section>
       </div>
-    </body>
+    </>
   );
 }

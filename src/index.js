@@ -16,6 +16,7 @@ import { FirebaseAppProvider } from "reactfire"; /*se importa el provedor de fir
 import firebaseConfig from "./firebase-config"; /*Se importa la configuracion de firebase que esta en el archivo firebase-config.js*/
 import { ScreenHojalateria } from "./Screens/ScreenHojalateria";
 import { ViewAdmin } from "./views/viewAdmin";
+import { UserContextProvider } from "./context/UserContext";
 /*Creando rutas con react-router-dom*/
 export const router = createBrowserRouter([
   {
@@ -24,7 +25,12 @@ export const router = createBrowserRouter([
   },
   {
     path: "/admin",
-    element: <Admin />,
+    element: (
+      /*El componente Admin puede hacer uso del contexto, para esto envolvemos el componente dentro de la funcion UserContextProvider, esta es la funcion que provee los valores al contexto*/
+      <UserContextProvider>
+        <Admin />
+      </UserContextProvider>
+    ),
   },
   {
     path: "/hojalateria",
@@ -32,7 +38,12 @@ export const router = createBrowserRouter([
   },
   {
     path: "/agregar",
-    element: <ViewAdmin />,
+    element: (
+      /*El componente ViewAdmin puede hacer uso del contexto, para esto envolvemos el componente dentro de la funcion UserContextProvider, esta es la funcion que provee los valores al contexto*/
+      <UserContextProvider>
+        <ViewAdmin />
+      </UserContextProvider>
+    ),
   },
   {
     path: "/inicio",

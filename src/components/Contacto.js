@@ -26,7 +26,7 @@ export const Contacto = ({ seccion }) => {
   };
   return (
     <>
-      <form className="form" ref={form} onSubmit={sendEmail}>
+      <form id="contacto" className="form" ref={form} onSubmit={sendEmail}>
         <h1>{seccion}</h1>
         <label>Nombre</label>
         <input type="text" name="user_name" />
