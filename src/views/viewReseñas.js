@@ -27,6 +27,7 @@ export const Reseñas = () => {
         <textarea
           ref={textarea}
           onChange={(e) => setComentario(e.target.value)}
+          className="border-b-2 border-blue-500 border-t-0 border-r-0 border-l-0 focus:outline-none"
         ></textarea>
         <button
           onClick={() => {

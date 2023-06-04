@@ -11,12 +11,7 @@
 .agregar-trabajo input {
   width: 500px;
 }
-.agregar-trabajo button {
-  background-color: blue;
-  color: white;
-  border-radius: 10px;
-  margin-top: 10px;
-}
+
 /*ESTILOS PARA LA CARD TRABAJOS*/
 .section-trabajos {
   display: flex;
@@ -43,14 +38,4 @@
 .body-trabajos p {
   text-align: justify;
   text-align: center;
-}
-.btn-trabajos {
-  margin-top: 10px;
-  background-color: blue;
-  color: white;
-  border: 1px solid white;
-  border-radius: 10px;
-  width: 400px;
-  text-align: center;
-  text-decoration: none;
 }

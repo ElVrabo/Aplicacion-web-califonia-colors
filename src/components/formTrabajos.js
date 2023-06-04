@@ -52,19 +52,21 @@ export const Trabajos = ({ titulo }) => {
         <label htmlFor="imagen">Añade una imagen:</label>
         <input
           onChange={selectFile}
-          style={{
-            backgroundColor: "blue",
-            color: "white",
-            borderRadius: "10px",
-          }}
           type="file"
           id="imagen"
+          className="block w-full text-sm text-slate-500
+          file:mr-4 file:py-2 file:px-4
+          file:rounded-full file:border-0
+          file:text-sm file:font-semibold
+          file:bg-violet-50 file:text-violet-700
+          hover:file:bg-violet-100 border-b-2 border-blue-700 border-t-0 border-r-0 border-l-0"
         />
         <label htmlFor="trabajo">Trabajo:</label>
         <input
           type="text"
           id="trabajo"
           onChange={(e) => setTrabajo(e.target.value)}
+          className="border-b-2 border-blue-500 border-t-0 border-r-0 border-l-0 focus:outline-none"
         />
         <label htmlFor="descripcion">Descripcion:</label>
         <textarea
@@ -73,9 +75,20 @@ export const Trabajos = ({ titulo }) => {
           cols="30"
           rows="10"
           onChange={(e) => setDescripcion(e.target.value)}
+          className="border-b-2 border-blue-500 border-t-0 border-r-0 border-l-0 focus:outline-none"
         ></textarea>
-        <button onClick={insertJob}>Insertar</button>
-        <button onClick={deleteJob}>Eliminar vacantes</button>
+        <button
+          className="bg-blue-500 hover:bg-blue-700 w-50 text-white mt-2 w-100"
+          onClick={insertJob}
+        >
+          Insertar
+        </button>
+        <button
+          className="bg-blue-500 hover:bg-blue-700 w-50 text-white mt-2 w-100"
+          onClick={deleteJob}
+        >
+          Eliminar vacantes
+        </button>
       </div>
     </div>
   );

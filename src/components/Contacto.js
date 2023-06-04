@@ -29,11 +29,22 @@ export const Contacto = ({ seccion }) => {
       <form id="contacto" className="form" ref={form} onSubmit={sendEmail}>
         <h1>{seccion}</h1>
         <label>Nombre</label>
-        <input type="text" name="user_name" />
+        <input
+          type="text"
+          name="user_name"
+          className="border-b-2 border-blue-500 border-t-0 border-r-0 border-l-0 focus:outline-none"
+        />
         <label>email</label>
-        <input type="email" name="user_email" />
+        <input
+          type="email"
+          name="user_email"
+          className="border-b-2 border-blue-500 border-t-0 border-r-0 border-l-0 focus:outline-none"
+        />
         <label>mensaje</label>
-        <textarea name="message" />
+        <textarea
+          name="message"
+          className="border-b-2 border-blue-500 border-t-0 border-r-0 border-l-0 focus:outline-none"
+        />
         <input className="send" type="submit" value="Enviar mensaje" />
       </form>
     </>

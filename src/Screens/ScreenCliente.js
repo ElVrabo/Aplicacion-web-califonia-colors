@@ -1,4 +1,5 @@
 import "../App.css";
+import "../index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Navigete, useNavigate } from "react-router-dom";
 import { Vision } from "../views/viewVision";

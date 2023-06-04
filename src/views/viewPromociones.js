@@ -1,9 +1,15 @@
 import "../Promociones.css";
+
+import { useContext, useEffect, useState } from "react";
 import { promociones } from "../components/formPromociones";
-import { useState } from "react";
 
 export const Promociones = () => {
-  const [promocionesList, setPromocionesList] = useState(promociones);
+  const [promocionesList, setPromocionesList] = useState([]);
+
+  useEffect(() => {
+    setPromocionesList(promociones);
+  }, [promociones]);
+
   const deletePromotion = (id) => {
     const filterProducts = promocionesList.filter(
       (promocion) => promocion.id !== id

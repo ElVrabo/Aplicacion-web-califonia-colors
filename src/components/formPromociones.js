@@ -1,6 +1,8 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import "../agregarpromociones.css";
 import { useNavigate } from "react-router-dom";
+
+export let promociones = [];
 
 export const FormPromociones = () => {
   let [imagen, setImagen] = useState("");
@@ -38,7 +40,6 @@ export const FormPromociones = () => {
       };
       promociones = [...promociones, promocion];
       resetInputs();
-      console.log(promociones);
     } else {
       alert("rellena los campos porfavor");
     }
@@ -62,48 +63,57 @@ export const FormPromociones = () => {
         <label htmlFor="imagen">Añade una imagen:</label>
         <input
           onChange={selectFile}
-          style={{
-            backgroundColor: "blue",
-            color: "white",
-            borderRadius: "10px",
-          }}
           type="file"
           id="imagen"
+          className="block w-full text-sm text-slate-500
+          file:mr-4 file:py-2 file:px-4
+          file:rounded-full file:border-0
+          file:text-sm file:font-semibold
+          file:bg-violet-50 file:text-violet-700
+          hover:file:bg-violet-100 border-b-2 border-blue-700 border-t-0 border-r-0 border-l-0 w-50"
         />
         <label htmlFor="input1">Nombre de tu promocion:</label>
         <input
           id="input1"
           onChange={(e) => setTitulo(e.target.value)}
           type="text"
+          className="border-b-2 border-blue-500 border-t-0 border-r-0 border-l-0 focus:outline-none"
         />
         <label htmlFor="input2">Descripcion de la promocion:</label>
         <input
           id="input2"
           onChange={(e) => setDescripcion(e.target.value)}
           type="text"
+          className="border-b-2 border-blue-500 border-t-0 border-r-0 border-l-0 focus:outline-none"
         />
         <label htmlFor="input3">Precio de la promocion:</label>
         <input
           id="input3"
           onChange={(e) => setPrecio(e.target.value)}
           type="text"
+          className="border-b-2 border-blue-500 border-t-0 border-r-0 border-l-0 focus:outline-none"
         />
-        <button className="botones" onClick={insertPromotion}>
+        <button
+          className="bg-blue-500 hover:bg-blue-700 w-50 text-white"
+          onClick={insertPromotion}
+        >
           Insertar promocion
         </button>
         <button
           onClick={() => {
             navigete("/inicio");
           }}
-          className="botones"
+          className="bg-blue-500 hover:bg-blue-700 w-50 text-white"
         >
           Visualizar promociones
         </button>
-        <button onClick={deleteAllPromotions} className="botones">
+        <button
+          onClick={deleteAllPromotions}
+          className="bg-blue-500 hover:bg-blue-700 w-50 text-white"
+        >
           Eliminar todas las promociones
         </button>
       </div>
     </>
   );
 };
-export let promociones = [];

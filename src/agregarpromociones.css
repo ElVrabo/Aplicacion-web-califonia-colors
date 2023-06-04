@@ -11,6 +11,10 @@ h1 {
 }
 input {
   width: 50%;
+  border: 1px solid black;
+}
+textarea {
+  border: 1px solid black;
 }
 label {
   color: blue;

@@ -9,7 +9,10 @@ export const InfoTrabajos = ({ img, info, referencia }) => {
             <img src={img} alt="" />
             <p>{info}</p>
           </div>
-          <a href={referencia} className="btn-trabajos">
+          <a
+            href={referencia}
+            className="bg-blue-500 hover:bg-blue-700 w-50 text-white text-decoration-none text-center rounded-md"
+          >
             Ver vacantes disponibles
           </a>
         </div>
