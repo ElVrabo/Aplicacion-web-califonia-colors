@@ -1,5 +1,5 @@
 import "../header.css";
-import { Vision } from "../views/viewVision";
+
 export const Header = ({ titulo, parrafo }) => {
   return (
     <div className="container-padre">
@@ -33,7 +33,10 @@ export const Header = ({ titulo, parrafo }) => {
 const ButtonExplorar = ({ texto, referencia }) => {
   return (
     <div className="container-button">
-      <a href={referencia} className="link-explorar">
+      <a
+        href={referencia}
+        className="bg-blue-500 hover:bg-blue-700 w-50 text-white text-decoration-none text-center rounded-md"
+      >
         {texto}
       </a>
     </div>

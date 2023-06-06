@@ -2,10 +2,10 @@ import "../App.css";
 import "../index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Navigete, useNavigate } from "react-router-dom";
-import { Vision } from "../views/viewVision";
-import { Mision, Valores } from "../views/viewMision";
-import { Promociones } from "../views/viewPromociones";
-import { Header } from "../views/viewHeader";
+import { Vision } from "../layouts/viewVision";
+import { Mision, Valores } from "../layouts/viewMision";
+import { Promociones } from "../layouts/viewPromociones";
+import { Header } from "../layouts/viewHeader";
 
 import { CardsServicios } from "../Cards-servicios";
 import hojalateria from "../assets/hojalateria.jpeg";
@@ -13,12 +13,12 @@ import tapiceria from "../assets/tapiceria.jpeg";
 import electrico from "../assets/electrico.jpg";
 import pintura from "../assets/pintura.jpeg";
 import mecanica from "../assets/mecanica.jpg";
-import { Reseñas } from "../views/viewReseñas";
+import { Reseñas } from "../layouts/viewReseñas";
 import { Contacto } from "../components/Contacto";
 import { Button } from "@mui/material";
 import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 
-import { ApartadoTrabajos } from "../views/viewTrabajos";
+import { ApartadoTrabajos } from "../layouts/viewTrabajos";
 
 /*rfc funciona como atajo para crear un nuevo componente*/
 

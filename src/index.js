@@ -2,7 +2,7 @@ import "tailwindcss/tailwind.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import { App } from "./Screens/ScreenCliente";
+import { App } from "./pages/ScreenCliente";
 import reportWebVitals from "./reportWebVitals";
 import {
   BrowserRouter as Router,
@@ -15,8 +15,8 @@ import {
 import { Admin } from "./components/formAdmin";
 import { FirebaseAppProvider } from "reactfire"; /*se importa el provedor de firebase para poder hacer uso de los servicios que nos ofrece*/
 import firebaseConfig from "./firebase-config"; /*Se importa la configuracion de firebase que esta en el archivo firebase-config.js*/
-import { ScreenHojalateria } from "./Screens/ScreenHojalateria";
-import { ViewAdmin } from "./views/viewAdmin";
+import { ScreenHojalateria } from "./pages/ScreenHojalateria";
+import { ViewAdmin } from "./layouts/viewAdmin";
 import { UserContextProvider } from "./context/UserContext";
 /*Creando rutas con react-router-dom*/
 export const router = createBrowserRouter([

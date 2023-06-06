@@ -30,6 +30,7 @@ export const Reseñas = () => {
           className="border-b-2 border-blue-500 border-t-0 border-r-0 border-l-0 focus:outline-none"
         ></textarea>
         <button
+          className="bg-blue-500 hover:bg-blue-700 w-50 text-white text-decoration-none text-center rounded-md"
           onClick={() => {
             /*El arreglo destructurado [...comentarios,comentario] es una forma de agregar un elemento nuevo al final del arreglo comentarios. Esto se logra creando un nuevo arreglo que contenga los elementos del original, para esto se usa el [...comentarios] seguidos del nuevo elemento (comentario)*/
             if (comentario) {

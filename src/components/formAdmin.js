@@ -3,6 +3,7 @@ import "../admin.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
+
 export function Admin() {
   /*Este componente puede hacer uso de las variables de estado que se definieron dentro del contexto UserContext*/
   const { usuario, setUsuario, password, setPassword } =

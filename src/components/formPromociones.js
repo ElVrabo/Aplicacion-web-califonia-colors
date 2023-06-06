@@ -1,14 +1,18 @@
 import { useContext, useRef, useState } from "react";
 import "../agregarpromociones.css";
 import { useNavigate } from "react-router-dom";
-
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 export let promociones = [];
 
 export const FormPromociones = () => {
   let [imagen, setImagen] = useState("");
   let [titulo, setTitulo] = useState("");
   let [descripcion, setDescripcion] = useState("");
+  let [modal, setModal] = useState(false);
+  let [modalError, setModalError] = useState(false);
   let [precio, setPrecio] = useState("");
+
   let FormPromociones = useRef();
   const navigete = useNavigate();
 
@@ -39,9 +43,12 @@ export const FormPromociones = () => {
         precio,
       };
       promociones = [...promociones, promocion];
+      setModal(true);
+      setModalError(false);
       resetInputs();
     } else {
-      alert("rellena los campos porfavor");
+      setModalError(true);
+      setModal(false);
     }
   };
 
@@ -60,6 +67,30 @@ export const FormPromociones = () => {
   return (
     <>
       <div ref={FormPromociones} className="form-agregar">
+        <div className="modal">
+          <Modal show={modal} onHide={() => setModal(false)}>
+            <Modal.Header closeButton>
+              <Modal.Title style={{ color: "green" }}>Correcto!</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>Tu promocion se agrego con exito</Modal.Body>
+            <Modal.Footer>
+              <Button variant="primary" onClick={() => setModal(false)}>
+                Cerrar
+              </Button>
+            </Modal.Footer>
+          </Modal>
+          <Modal show={modalError} onHide={() => setModalError(false)}>
+            <Modal.Header closeButton>
+              <Modal.Title style={{ color: "red" }}>Error!</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>Debes llenar todos los campos</Modal.Body>
+            <Modal.Footer>
+              <Button variant="primary" onClick={() => setModalError(false)}>
+                Cerrar
+              </Button>
+            </Modal.Footer>
+          </Modal>
+        </div>
         <label htmlFor="imagen">Añade una imagen:</label>
         <input
           onChange={selectFile}
@@ -99,6 +130,10 @@ export const FormPromociones = () => {
         >
           Insertar promocion
         </button>
+        {/* <Modal open={openModal} onClose={() => setOpenModal(false)}>
+          <h2>Exito</h2>
+          <p>Se agrego la promocion con exito</p>
+        </Modal> */}
         <button
           onClick={() => {
             navigete("/inicio");

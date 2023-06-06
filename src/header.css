@@ -32,8 +32,6 @@
   display: flex;
   justify-content: center;
   width: 50%;
-  background-color: blue;
-  border-radius: 10px;
 }
 .link-explorar {
   text-decoration: none;
