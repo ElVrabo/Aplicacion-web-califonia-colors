@@ -2,6 +2,15 @@ import "../trabajos.css";
 import { trabajos } from "../components/formTrabajos";
 import { InfoTrabajos } from "../components/InfoTrabajos";
 export const ApartadoTrabajos = () => {
+  const sendMessage = () => {
+    const phoneNumber = "2412477577"; // numero al que se enviara el mensaje
+    const message = "Hola, me interesa esta vacante"; // mensaje que se desea enviar
+
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+      message
+    )}`;
+    window.location.href = url;
+  };
   const trabajosRender = trabajos.map((e) => (
     <div className="card" style={{ width: "18rem" }}>
       <img className="card-img-top img" src={e.imagen} />
@@ -11,7 +20,9 @@ export const ApartadoTrabajos = () => {
         </h5>
         <p className="card-text">{e.descripcion}</p>
         <p>{e.precio}</p>
-        <button className="btn-promo">Informacion</button>
+        <button className="btn-promo" onClick={sendMessage}>
+          Me interesa
+        </button>
       </div>
     </div>
   ));
@@ -25,7 +36,12 @@ export const ApartadoTrabajos = () => {
 
       <div
         id="trabajos"
-        style={{ marginTop: "30px" }}
+        style={{
+          marginTop: "30px",
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "20px",
+        }}
         className="empleo-disponible"
       >
         {trabajosRender}

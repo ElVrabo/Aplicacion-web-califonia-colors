@@ -1,6 +1,5 @@
-import { useContext, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import "../agregarpromociones.css";
-import { useNavigate } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 export let promociones = [];
@@ -9,12 +8,18 @@ export const FormPromociones = () => {
   let [imagen, setImagen] = useState("");
   let [titulo, setTitulo] = useState("");
   let [descripcion, setDescripcion] = useState("");
+  let [precio, setPrecio] = useState("");
   let [modal, setModal] = useState(false);
   let [modalError, setModalError] = useState(false);
-  let [precio, setPrecio] = useState("");
+  let [modalDelete, setModalDelete] = useState(false);
+  let [modalDeleteError, setModalDeleteError] = useState(false);
+  let [modalViewPromotions, setModalViewPromotions] = useState(false);
+  const imagenValue = useRef();
+  const tituloValue = useRef();
+  const descripcionValue = useRef();
+  const precioValue = useRef();
 
   let FormPromociones = useRef();
-  const navigete = useNavigate();
 
   const resetInputs = () => {
     /*Array.from se uso para convertir la coleccion de elementos obtenida en un array y luego filtramos los elementos por su propiedad tagName, en este caso el arreglo unicamente tendra elementos html input*/
@@ -34,15 +39,20 @@ export const FormPromociones = () => {
     }
   };
   const insertPromotion = () => {
-    if (imagen && titulo && descripcion && precio) {
-      let promocion = {
+    if (
+      imagenValue.current.files &&
+      tituloValue.current.value &&
+      descripcionValue.current.value &&
+      precioValue.current.value
+    ) {
+      let e = {
         id: promociones.length,
         imagen,
         titulo,
         descripcion,
         precio,
       };
-      promociones = [...promociones, promocion];
+      promociones = [...promociones, e];
       setModal(true);
       setModalError(false);
       resetInputs();
@@ -53,14 +63,12 @@ export const FormPromociones = () => {
   };
 
   const deleteAllPromotions = () => {
-    if (promociones.length == 0) {
-      alert("no hay ninguna promocion por eliminar");
+    if (promociones.length === 0) {
+      setModalDeleteError(true);
     } else {
       /*el metodo splice funciona para eliminar elementos de un array, se le proporciona el indice de inicio que es 0 y la cantidad de elementos que se quieren eliminar (longitud del array)*/
       promociones = [];
-      alert(
-        "se eliminaron todas tus promociones, pulsa el boton de arriba para checar"
-      );
+      setModalDelete(true);
     }
   };
 
@@ -90,10 +98,79 @@ export const FormPromociones = () => {
               </Button>
             </Modal.Footer>
           </Modal>
+          <Modal show={modalDelete} onHide={() => setModalDelete(false)}>
+            <Modal.Header closeButton>
+              <Modal.Title style={{ color: "green" }}>Correcto!</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              Todas tus promociones se eliminaron correctamente
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="primary" onClick={() => setModalDelete(false)}>
+                Cerrar
+              </Button>
+            </Modal.Footer>
+          </Modal>
+          <Modal
+            show={modalDeleteError}
+            onHide={() => setModalDeleteError(false)}
+          >
+            <Modal.Header closeButton>
+              <Modal.Title style={{ color: "red" }}>Error!</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>no tienes ninguna pomocion</Modal.Body>
+            <Modal.Footer>
+              <Button
+                variant="primary"
+                onClick={() => setModalDeleteError(false)}
+              >
+                Cerrar
+              </Button>
+            </Modal.Footer>
+          </Modal>
+          <Modal
+            fullscreen={true}
+            size="lg"
+            show={modalViewPromotions}
+            onHide={() => setModalViewPromotions(false)}
+          >
+            <Modal.Header closeButton>
+              <Modal.Title style={{ color: "green" }}>
+                Tus promociones:
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Body style={{ display: "flex", flexWrap: "wrap" }}>
+              {promociones.length > 0 ? (
+                promociones.map((e) => {
+                  return (
+                    <div className="card" style={{ width: "18rem" }} key={e.id}>
+                      <img className="card-img-top img" src={e.imagen} />
+                      <div className="card-body">
+                        <h5 className="card-title">{e.titulo}</h5>
+                        <p className="card-text">{e.descripcion}</p>
+                        <p>{e.precio}</p>
+                      </div>
+                    </div>
+                  );
+                })
+              ) : (
+                <h1 style={{ color: "black" }}>No tienes ninguna promocion</h1>
+              )}
+            </Modal.Body>
+            <Modal.Footer>
+              <Button
+                variant="primary"
+                onClick={() => setModalViewPromotions(false)}
+              >
+                Cerrar
+              </Button>
+            </Modal.Footer>
+          </Modal>
         </div>
         <label htmlFor="imagen">Añade una imagen:</label>
         <input
           onChange={selectFile}
+          ref={imagenValue}
           type="file"
           id="imagen"
           className="block w-full text-sm text-slate-500
@@ -105,6 +182,7 @@ export const FormPromociones = () => {
         />
         <label htmlFor="input1">Nombre de tu promocion:</label>
         <input
+          ref={tituloValue}
           id="input1"
           onChange={(e) => setTitulo(e.target.value)}
           type="text"
@@ -112,6 +190,7 @@ export const FormPromociones = () => {
         />
         <label htmlFor="input2">Descripcion de la promocion:</label>
         <input
+          ref={descripcionValue}
           id="input2"
           onChange={(e) => setDescripcion(e.target.value)}
           type="text"
@@ -119,6 +198,7 @@ export const FormPromociones = () => {
         />
         <label htmlFor="input3">Precio de la promocion:</label>
         <input
+          ref={precioValue}
           id="input3"
           onChange={(e) => setPrecio(e.target.value)}
           type="text"
@@ -132,11 +212,11 @@ export const FormPromociones = () => {
         </button>
         {/* <Modal open={openModal} onClose={() => setOpenModal(false)}>
           <h2>Exito</h2>
-          <p>Se agrego la promocion con exito</p>
+          <p>Se agrego la e con exito</p>
         </Modal> */}
         <button
           onClick={() => {
-            navigete("/inicio");
+            setModalViewPromotions(true);
           }}
           className="bg-blue-500 hover:bg-blue-700 w-50 text-white"
         >

@@ -1,11 +1,19 @@
 import { useState, useRef } from "react";
 import "../trabajos.css";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 export const Trabajos = ({ titulo }) => {
   const [imagen, setImagen] = useState("");
   const [trabajo, setTrabajo] = useState("");
   const [descripcion, setDescripcion] = useState("");
-  let FormTrabajos = useRef();
-  let textarea = useRef();
+  const [addExit, setAddExit] = useState(false);
+  const [addError, setAddError] = useState(false);
+  const [deleteJobExit, setDeleteJobExit] = useState(false);
+  const [deleteJobError, setDeleteJobError] = useState(false);
+  const FormTrabajos = useRef();
+  const imagenTrabajoValue = useRef();
+  const tituloTrabajoValue = useRef();
+  const descripcionTrabajoValue = useRef();
   const resetInputs = () => {
     const inputs = Array.from(FormTrabajos.current.children).filter(
       (element) => element.tagName === "INPUT"
@@ -23,34 +31,93 @@ export const Trabajos = ({ titulo }) => {
   };
 
   const insertJob = () => {
-    if (imagen && trabajo && descripcion) {
+    if (
+      imagenTrabajoValue.current.files &&
+      tituloTrabajoValue.current.value &&
+      descripcionTrabajoValue.current.value
+    ) {
       let cuerpo = {
         imagen,
         trabajo,
         descripcion,
       };
       trabajos = [...trabajos, cuerpo];
+      setAddExit(true);
       resetInputs();
-      textarea.current.value = "";
+      descripcionTrabajoValue.current.value = "";
     } else {
-      alert("rellena los campos,porfavor");
+      setAddError(true);
     }
   };
 
   const deleteJob = () => {
     if (trabajos.length > 0) {
       trabajos.splice(0, trabajos.length);
+      setDeleteJobExit(true);
     } else {
-      alert("aun no hay vacantes para eliminar");
+      setDeleteJobError(true);
     }
   };
 
   return (
     <div className="container-trabajos">
+      <div className="modals">
+        <Modal show={addExit} onHide={() => setAddExit(false)}>
+          <Modal.Header closeButton>
+            <Modal.Title style={{ color: "green" }}>Correcto!</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            Tu vacantes se agrego y la podran ver tus clientes
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="primary" onClick={() => setAddExit(false)}>
+              Cerrar
+            </Button>
+          </Modal.Footer>
+        </Modal>
+        <Modal show={addError} onHide={() => setAddError(false)}>
+          <Modal.Header closeButton>
+            <Modal.Title style={{ color: "red" }}>Error!</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            Algo salio mal, porfavor verifica todos los campos!
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="primary" onClick={() => setAddError(false)}>
+              Cerrar
+            </Button>
+          </Modal.Footer>
+        </Modal>
+        <Modal show={deleteJobExit} onHide={() => setDeleteJobExit(false)}>
+          <Modal.Header closeButton>
+            <Modal.Title style={{ color: "green" }}>Exito!</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Se borraron todas las vacantes correctamente!</Modal.Body>
+          <Modal.Footer>
+            <Button variant="primary" onClick={() => setDeleteJobExit(false)}>
+              Cerrar
+            </Button>
+          </Modal.Footer>
+        </Modal>
+        <Modal show={deleteJobError} onHide={() => setDeleteJobError(false)}>
+          <Modal.Header closeButton>
+            <Modal.Title style={{ color: "red" }}>Error!</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            Algo salio mal, no tienes ninguna vacante para eliminar!
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="primary" onClick={() => setDeleteJobError(false)}>
+              Cerrar
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </div>
       <h1>{titulo}</h1>
       <div ref={FormTrabajos} className="agregar-trabajo">
         <label htmlFor="imagen">Añade una imagen:</label>
         <input
+          ref={imagenTrabajoValue}
           onChange={selectFile}
           type="file"
           id="imagen"
@@ -63,6 +130,7 @@ export const Trabajos = ({ titulo }) => {
         />
         <label htmlFor="trabajo">Trabajo:</label>
         <input
+          ref={tituloTrabajoValue}
           type="text"
           id="trabajo"
           onChange={(e) => setTrabajo(e.target.value)}
@@ -70,7 +138,7 @@ export const Trabajos = ({ titulo }) => {
         />
         <label htmlFor="descripcion">Descripcion:</label>
         <textarea
-          ref={textarea}
+          ref={descripcionTrabajoValue}
           id="descripcion"
           cols="30"
           rows="10"

@@ -1,6 +1,6 @@
 import "../Promociones.css";
 
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { promociones } from "../components/formPromociones";
 
 export const Promociones = () => {
@@ -10,12 +10,6 @@ export const Promociones = () => {
     setPromocionesList(promociones);
   }, [promociones]);
 
-  const deletePromotion = (id) => {
-    const filterProducts = promocionesList.filter(
-      (promocion) => promocion.id !== id
-    );
-    setPromocionesList(filterProducts);
-  };
   const promocionesRender = promocionesList.map((e) => (
     <div className="card" style={{ width: "18rem" }} key={e.id}>
       <img className="card-img-top img" src={e.imagen} />
@@ -23,9 +17,7 @@ export const Promociones = () => {
         <h5 className="card-title">{e.titulo}</h5>
         <p className="card-text">{e.descripcion}</p>
         <p>{e.precio}</p>
-        <button onClick={() => deletePromotion(e.id)} className="btn-promo">
-          eliminar
-        </button>
+        <button className="btn-promo">Mas informacion</button>
       </div>
     </div>
   ));
