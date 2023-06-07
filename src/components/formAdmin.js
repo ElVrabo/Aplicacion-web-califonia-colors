@@ -1,8 +1,9 @@
-import { useContext, useEffect, useRef, useState } from "react";
-import "../admin.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
+import { PageAdmin } from "../config/router/paths";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../admin.css";
 
 export function Admin() {
   /*Este componente puede hacer uso de las variables de estado que se definieron dentro del contexto UserContext*/
@@ -20,7 +21,7 @@ export function Admin() {
 
   const login = () => {
     if (usuario && password) {
-      navigate("/agregar");
+      navigate(PageAdmin);
     } else {
       alert("rellena los campos con la informacion correcta");
     }

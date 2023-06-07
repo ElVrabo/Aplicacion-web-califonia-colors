@@ -1,7 +1,7 @@
 import "../App.css";
 import "../index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Navigete, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Vision } from "../layouts/viewVision";
 import { Mision, Valores } from "../layouts/viewMision";
 import { Promociones } from "../layouts/viewPromociones";
@@ -19,6 +19,7 @@ import { Button } from "@mui/material";
 import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 
 import { ApartadoTrabajos } from "../layouts/viewTrabajos";
+import { LOGIN } from "../config/router/paths";
 
 /*rfc funciona como atajo para crear un nuevo componente*/
 
@@ -53,7 +54,7 @@ export function App() {
           <Button
             style={{ borderRadius: "5px", backgroundColor: "blue" }}
             onClick={() => {
-              navigete("/admin");
+              navigete(LOGIN);
             }}
             variant="contained"
             startIcon={<AccountCircleRoundedIcon />}

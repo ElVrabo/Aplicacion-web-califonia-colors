@@ -2,63 +2,19 @@ import "tailwindcss/tailwind.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import { App } from "./pages/ScreenCliente";
 import reportWebVitals from "./reportWebVitals";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-import { Admin } from "./components/formAdmin";
-import { FirebaseAppProvider } from "reactfire"; /*se importa el provedor de firebase para poder hacer uso de los servicios que nos ofrece*/
-import firebaseConfig from "./firebase-config"; /*Se importa la configuracion de firebase que esta en el archivo firebase-config.js*/
-import { ScreenHojalateria } from "./pages/ScreenHojalateria";
-import { ViewAdmin } from "./layouts/viewAdmin";
-import { UserContextProvider } from "./context/UserContext";
-/*Creando rutas con react-router-dom*/
-export const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-  },
-  {
-    path: "/admin",
-    element: (
-      /*El componente Admin puede hacer uso del contexto, para esto envolvemos el componente dentro de la funcion UserContextProvider, esta es la funcion que provee los valores al contexto*/
-      <UserContextProvider>
-        <Admin />
-      </UserContextProvider>
-    ),
-  },
-  {
-    path: "/hojalateria",
-    element: <ScreenHojalateria />,
-  },
-  {
-    path: "/agregar",
-    element: (
-      /*El componente ViewAdmin puede hacer uso del contexto, para esto envolvemos el componente dentro de la funcion UserContextProvider, esta es la funcion que provee los valores al contexto*/
-      <UserContextProvider>
-        <ViewAdmin />
-      </UserContextProvider>
-    ),
-  },
-  {
-    path: "/inicio",
-    element: <App />,
-  },
-]);
+import { BrowserRouter } from "react-router-dom";
+
+import { AppRouter } from "./config/router/AppRoutes";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <FirebaseAppProvider firebaseConfig={firebaseConfig}>
-    <React.StrictMode>
-      <RouterProvider router={router} />
-    </React.StrictMode>
-  </FirebaseAppProvider>
+  <React.StrictMode>
+    {/*BrowserRouter le indica al navegador que dentro del AppRouter estan todas las rutas de nuestra app*/}
+    <BrowserRouter>
+      <AppRouter />
+    </BrowserRouter>
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
