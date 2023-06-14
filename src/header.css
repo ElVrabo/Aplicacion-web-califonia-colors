@@ -6,7 +6,6 @@
 }
 .logo {
   display: flex;
-  justify-content: start;
   align-items: center;
   gap: 20px;
 }
@@ -54,4 +53,66 @@
 .container-about p {
   text-align: justify;
   color: blue;
+}
+
+/*diseño para dispositivos moviles inteligentes antiguos*/
+@media (max-width: 576px) {
+  .container-padre {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .logo {
+    display: flex;
+    flex-direction: column;
+  }
+  .container-about {
+    gap: 25px;
+  }
+  .container-about p {
+    text-align: justify;
+  }
+}
+
+/*diseño para dispositivos moviles inteligentes y algunos modelos de tabletas en posicion vertical */
+@media (min-width: 577px) and (max-width: 768px) {
+  .container-padre {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .logo {
+    margin-top: 25px;
+    display: flex;
+    gap: 15px;
+  }
+}
+
+/*diseño para dispositivos con pantallas mas grandes, tabletas en posicion hroizontal*/
+@media (min-width: 769px) and (max-width: 997px) {
+  .container-padre {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .logo {
+    margin-top: 25px;
+    display: flex;
+    gap: 30px;
+  }
+}
+
+@media (min-width: 997px) {
+  .container-padre {
+    margin-top: 30px;
+    display: grid;
+    gap: 10px;
+    height: auto;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .logo {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
 }

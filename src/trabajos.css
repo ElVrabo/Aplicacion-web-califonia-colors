@@ -1,17 +1,3 @@
-.container-trabajos {
-  margin-top: 50px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.agregar-trabajo {
-  display: flex;
-  flex-direction: column;
-}
-.agregar-trabajo input {
-  width: 500px;
-}
-
 /*ESTILOS PARA LA CARD TRABAJOS*/
 .section-trabajos {
   display: flex;
@@ -24,18 +10,20 @@
   align-items: center;
   border-radius: 10px;
 }
-.body-trabajos {
+.icon-trabajos {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  font-size: 200px;
+  color: blue;
 }
-.body-trabajos img {
-  border-radius: 10px;
-  width: 300px;
-  height: 200px;
+.texto-trabajos {
+  display: flex;
+  justify-content: center;
 }
-.body-trabajos p {
-  text-align: justify;
+.texto-trabajos p {
   text-align: center;
+  text-align: justify;
+  font-size: 17px;
 }

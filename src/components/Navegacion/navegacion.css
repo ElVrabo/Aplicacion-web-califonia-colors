@@ -1,0 +1,16 @@
+.container-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-around;
+  margin-top: 30px;
+}
+/*diseño para dispositivos moviles o tabletas*/
+@media (max-width: 860px) {
+  .container-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+}

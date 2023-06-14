@@ -1,24 +1,45 @@
 import { Route, Routes } from "react-router-dom";
-import App from "../../pages/ScreenCliente";
 import { UserContextProvider } from "../../context/UserContext";
-import { Admin } from "../../components/formAdmin";
 import { ScreenHojalateria } from "../../pages/ScreenHojalateria";
 import { ViewAdmin } from "../../layouts/viewAdmin";
-import { HOJALATERIA, HOME, LOGIN, PageAdmin } from "./paths";
+import {
+  CATALOGOSERVICIOS,
+  CONTACTO,
+  HOJALATERIA,
+  HOME,
+  LOGIN,
+  ListPromociones,
+  PageAdmin,
+  ListTrabajos,
+  ListComentarios,
+} from "./paths";
+import { Home } from "../../pages/Home/Home";
+import { Promociones } from "../../pages/promociones/promociones";
+import { CatalogoServicios } from "../../pages/servicios/CatalogoServicios";
+import { Trabajos } from "../../pages/trabajos/trabajos";
+import { Reseñas } from "../../pages/reseñas/Reseñas";
+import { Contacto } from "../../pages/contacto/Contacto";
+import { Login } from "../../pages/Login/Login";
 
 export const AppRouter = () => {
   return (
     <Routes>
-      <Route path={HOME} element={<App />} />
+      <Route path={HOME} element={<Home />} />
+      <Route path={ListPromociones} element={<Promociones />} />
+      <Route path={CATALOGOSERVICIOS} element={<CatalogoServicios />} />
+      <Route path={ListTrabajos} element={<Trabajos />} />
+      <Route path={ListComentarios} element={<Reseñas />} />
+      <Route path={CONTACTO} element={<Contacto />} />
+      <Route path={HOJALATERIA} element={<ScreenHojalateria />} />
       <Route
         path={LOGIN}
         element={
           <UserContextProvider>
-            <Admin />
+            <Login />
           </UserContextProvider>
         }
       />
-      <Route path={HOJALATERIA} element={<ScreenHojalateria />} />
+
       <Route
         path={PageAdmin}
         element={

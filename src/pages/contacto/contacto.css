@@ -1,0 +1,56 @@
+.container-icons {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.body-icons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 350px;
+}
+.icon {
+  font-size: 90px;
+  color: blue;
+}
+.texto-icon p {
+  color: black;
+}
+
+.container-contacto {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+@media (max-width: 576px) {
+  .container-icons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .body-icons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+  }
+  .texto-icon {
+    width: 50%;
+  }
+}
+@media (min-width: 577px) and (max-width: 768px) {
+  .container-icons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

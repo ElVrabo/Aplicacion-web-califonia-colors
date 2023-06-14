@@ -1,8 +1,11 @@
+import "../styles/agregarTrabajos.css";
 import { useState, useRef } from "react";
-import "../trabajos.css";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-export const Trabajos = ({ titulo }) => {
+import { Boton } from "./Buttons/Button";
+import { useNavigate } from "react-router-dom";
+import { ListTrabajos } from "../config/router/paths";
+export const FormTrabajos = ({ titulo }) => {
   const [imagen, setImagen] = useState("");
   const [trabajo, setTrabajo] = useState("");
   const [descripcion, setDescripcion] = useState("");
@@ -14,6 +17,7 @@ export const Trabajos = ({ titulo }) => {
   const imagenTrabajoValue = useRef();
   const tituloTrabajoValue = useRef();
   const descripcionTrabajoValue = useRef();
+  const navigete = useNavigate();
   const resetInputs = () => {
     const inputs = Array.from(FormTrabajos.current.children).filter(
       (element) => element.tagName === "INPUT"
@@ -42,6 +46,7 @@ export const Trabajos = ({ titulo }) => {
         descripcion,
       };
       trabajos = [...trabajos, cuerpo];
+      console.log(trabajos);
       setAddExit(true);
       resetInputs();
       descripcionTrabajoValue.current.value = "";
@@ -145,18 +150,13 @@ export const Trabajos = ({ titulo }) => {
           onChange={(e) => setDescripcion(e.target.value)}
           className="border-b-2 border-blue-500 border-t-0 border-r-0 border-l-0 focus:outline-none"
         ></textarea>
-        <button
-          className="bg-blue-500 hover:bg-blue-700 w-50 text-white mt-2 w-100"
-          onClick={insertJob}
-        >
-          Insertar
-        </button>
-        <button
-          className="bg-blue-500 hover:bg-blue-700 w-50 text-white mt-2 w-100"
-          onClick={deleteJob}
-        >
-          Eliminar vacantes
-        </button>
+        <Boton color="primary" texto="insertar vacante" click={insertJob} />
+        <Boton
+          color="primary"
+          texto="visualizar vacantes"
+          click={() => navigete(ListTrabajos)}
+        />
+        <Boton color="primary" texto="eliminar vacantes" click={deleteJob} />
       </div>
     </div>
   );
