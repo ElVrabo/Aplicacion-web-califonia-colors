@@ -4,6 +4,9 @@ import emailjs from "@emailjs/browser";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { Navegacion } from "../../components/Navegacion/Navegacion";
+import iconoAgenda from "../../assets/icons/agenda.png";
+import iconoEmpresa from "../../assets/icons/office-building.png";
+import iconGmail from "../../assets/icons/gmail.png";
 export const Contacto = ({ seccion }) => {
   const [emailExit, setEmailExit] = useState(false);
   const [emailError, setEmailError] = useState(false);
@@ -45,7 +48,11 @@ export const Contacto = ({ seccion }) => {
       <div className="container-icons">
         <div className="body-icons">
           <div className="icon">
-            <ion-icon name="home-outline"></ion-icon>
+            <img
+              style={{ height: "100px" }}
+              src={iconoEmpresa}
+              alt="icono de ubicacion"
+            />
           </div>
           <div className="texto-icon">
             <p>CARR. APIZACO-TLAXCO</p>
@@ -53,7 +60,11 @@ export const Contacto = ({ seccion }) => {
         </div>
         <div className="body-icons">
           <div className="icon">
-            <ion-icon name="call-outline"></ion-icon>
+            <img
+              style={{ height: "100px" }}
+              src={iconoAgenda}
+              alt="icono de telefono"
+            />
           </div>
           <div className="texto-icon">
             <p>2411107447 o 2411314735</p>
@@ -61,7 +72,11 @@ export const Contacto = ({ seccion }) => {
         </div>
         <div className="body-icons">
           <div className="icon">
-            <ion-icon name="mail-open-outline"></ion-icon>
+            <img
+              style={{ height: "100px" }}
+              src={iconGmail}
+              alt="icono de gmail"
+            />
           </div>
           <div className="texto-icon">
             <p>californiacolors@hotmail.com</p>

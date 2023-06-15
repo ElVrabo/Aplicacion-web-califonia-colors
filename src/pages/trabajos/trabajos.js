@@ -121,10 +121,14 @@ export const Trabajos = () => {
 
         <div className="container-carrusel">
           <Carrusel
+            firstTitle="¿Buscas un empleo?"
+            secondTitle="¡No esperes mas!"
+            thirdTitle="Se de nuestro equipo"
             firstImage={carruselImage1}
             secondImage={carruselImage2}
             thirdImage={carruselImage3}
             redireccion="#trabajos"
+            textoRedireccion="Ver vacantes"
           />
         </div>
         <h1 style={{ marginTop: "20px" }}>Vacantes:</h1>
@@ -148,10 +152,14 @@ export const Trabajos = () => {
       <Navegacion />
       <div className="container-carrusel">
         <Carrusel
+          firstTitle="¿Buscas un empleo?"
+          secondTitle="¡No esperes mas!"
+          thirdTitle="Se de nuestro equipo"
           firstImage={carruselImage1}
           secondImage={carruselImage2}
           thirdImage={carruselImage3}
           redireccion="#trabajos"
+          textoRedireccion="Ver vacamtes"
         />
       </div>
 

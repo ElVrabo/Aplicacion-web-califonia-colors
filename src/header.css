@@ -72,6 +72,9 @@
   .container-about p {
     text-align: justify;
   }
+  .container-button {
+    width: 100%;
+  }
 }
 
 /*diseño para dispositivos moviles inteligentes y algunos modelos de tabletas en posicion vertical */

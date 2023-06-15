@@ -10,6 +10,7 @@ import {
   ListTrabajos,
 } from "../../config/router/paths";
 import { Button } from "@mui/material";
+
 import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 export const Navegacion = () => {
   const navigete = useNavigate();
@@ -17,45 +18,27 @@ export const Navegacion = () => {
   return (
     <>
       <nav className="container-nav">
-        <Link style={{ textDecoration: "none" }} to={HOME}>
+        <Link className="nav-links" to={HOME}>
           Inicio
         </Link>
-        <Link style={{ textDecoration: "none" }} to={ListPromociones}>
+        <Link className="nav-links" to={ListPromociones}>
           Promociones
         </Link>
-        <Link style={{ textDecoration: "none" }} to={CATALOGOSERVICIOS}>
+        <Link className="nav-links" to={CATALOGOSERVICIOS}>
           Catalogo de servicios
         </Link>
-        <Link style={{ textDecoration: "none" }} to={ListTrabajos}>
+        <Link className="nav-links" to={ListTrabajos}>
           ¿Buscas empleo?
         </Link>
-        <Link style={{ textDecoration: "none" }} to={ListComentarios}>
+        <Link className="nav-links" to={ListComentarios}>
           Comentarios
         </Link>
-        <Link style={{ textDecoration: "none" }} to={CONTACTO}>
+        <Link className="nav-links" to={CONTACTO}>
           Contacto
         </Link>
-        <div
-          className="container-admin"
-          style={{
-            backgroundColor: "blue",
-            borderRadius: "10px",
-            width: "80px",
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
-          <Button
-            style={{ borderRadius: "5px", backgroundColor: "blue" }}
-            onClick={() => {
-              navigete(LOGIN);
-            }}
-            variant="contained"
-            startIcon={<AccountCircleRoundedIcon />}
-          >
-            Admin
-          </Button>
-        </div>
+        <Link className="nav-links" to={LOGIN}>
+          Admin
+        </Link>
       </nav>
     </>
   );
