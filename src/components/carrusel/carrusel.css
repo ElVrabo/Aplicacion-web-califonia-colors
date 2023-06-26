@@ -1,6 +1,5 @@
 .imagen-carrusel {
   height: 500px;
-  filter: blur(6px);
 }
 .title-carrusel {
   color: white;
@@ -14,7 +13,7 @@
   justify-content: center;
 }
 .redireccionar {
-  background-color: blue;
+  background-color: #007bff;
   width: 200px;
   border-radius: 5px;
 }

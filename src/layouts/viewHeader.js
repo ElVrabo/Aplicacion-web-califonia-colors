@@ -33,10 +33,7 @@ export const Header = ({ titulo, parrafo }) => {
 const ButtonExplorar = ({ texto, referencia }) => {
   return (
     <div className="container-button">
-      <a
-        href={referencia}
-        className="bg-blue-500 hover:bg-blue-700 w-50 text-white text-decoration-none text-center rounded-md"
-      >
+      <a style={{ textDecoration: "none", color: "white" }} href={referencia}>
         {texto}
       </a>
     </div>

@@ -1,0 +1,31 @@
+.container-card-reseñas {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+.body-reseñas {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.body-reseñas img {
+  height: 200px;
+  width: 200px;
+}
+.body-reseñas p {
+  text-align: justify;
+}
+
+.btn-view-comments {
+  background-color: #007bff;
+  border-radius: 10px;
+  width: 200px;
+  text-align: center;
+}
+.btn-view-comments a {
+  color: white;
+  text-decoration: none;
+}

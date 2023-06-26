@@ -136,11 +136,7 @@ export const Contacto = ({ seccion }) => {
             name="message"
             className="border-b-2 border-blue-500 border-t-0 border-r-0 border-l-0 focus:outline-none"
           />
-          <input
-            className="bg-blue-500 hover:bg-blue-700 w-100 text-white text-decoration-none text-center rounded-md"
-            type="submit"
-            value="Enviar mensaje"
-          />
+          <input className="btn-send-message" type="submit" value="Enviar" />
         </form>
       </div>
     </>

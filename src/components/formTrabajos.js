@@ -1,18 +1,23 @@
 import "../styles/agregarTrabajos.css";
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { Boton } from "./Buttons/Button";
 import { useNavigate } from "react-router-dom";
 import { ListTrabajos } from "../config/router/paths";
+import { TrabajosContext } from "../context/TrabajosContext";
 export const FormTrabajos = ({ titulo }) => {
-  const [imagen, setImagen] = useState("");
-  const [trabajo, setTrabajo] = useState("");
-  const [descripcion, setDescripcion] = useState("");
+  const {
+    trabajosData,
+    setTrabajosData,
+    listTrabajosData,
+    setListTrabajosData,
+  } = useContext(TrabajosContext);
   const [addExit, setAddExit] = useState(false);
   const [addError, setAddError] = useState(false);
   const [deleteJobExit, setDeleteJobExit] = useState(false);
   const [deleteJobError, setDeleteJobError] = useState(false);
+  const [modalViewJobs, setModalViewJobs] = useState(false);
   const FormTrabajos = useRef();
   const imagenTrabajoValue = useRef();
   const tituloTrabajoValue = useRef();
@@ -30,7 +35,7 @@ export const FormTrabajos = ({ titulo }) => {
     const image = e.target.files[0];
     /*se valida que la imagen seleccionada sea del tipo image/ para asegurarse de que se esta cargando unicamente una imagen, si la imagen es valida se crea una URL temporal con el metodo URL.createObjectURL(image) y se actualiza el estado de la variable en setImagen con la url temporal generada, que se utilizara para posteriormente mostrar la imagen en el componente Promociones.js*/
     if (image.type.startsWith("image/")) {
-      setImagen(URL.createObjectURL(image));
+      setTrabajosData({ ...trabajosData, imagen: URL.createObjectURL(image) });
     }
   };
 
@@ -40,13 +45,14 @@ export const FormTrabajos = ({ titulo }) => {
       tituloTrabajoValue.current.value &&
       descripcionTrabajoValue.current.value
     ) {
-      let cuerpo = {
-        imagen,
-        trabajo,
-        descripcion,
+      let newTrabajo = {
+        id: listTrabajosData.length,
+        imagen: trabajosData.imagen,
+        trabajo: trabajosData.name,
+        descripcion: trabajosData.descripcion,
       };
-      trabajos = [...trabajos, cuerpo];
-      console.log(trabajos);
+      setListTrabajosData([...listTrabajosData, newTrabajo]);
+
       setAddExit(true);
       resetInputs();
       descripcionTrabajoValue.current.value = "";
@@ -55,13 +61,22 @@ export const FormTrabajos = ({ titulo }) => {
     }
   };
 
-  const deleteJob = () => {
-    if (trabajos.length > 0) {
-      trabajos.splice(0, trabajos.length);
+  const openModalViewJobs = () => {
+    setModalViewJobs(true);
+  };
+
+  const deleteJobs = () => {
+    if (trabajosData.length > 0) {
+      setListTrabajosData([]);
       setDeleteJobExit(true);
     } else {
       setDeleteJobError(true);
     }
+  };
+  const deleteJob = (id) => {
+    setListTrabajosData(
+      listTrabajosData.filter((trabajos) => trabajos.id !== id)
+    );
   };
 
   return (
@@ -117,6 +132,47 @@ export const FormTrabajos = ({ titulo }) => {
             </Button>
           </Modal.Footer>
         </Modal>
+        <Modal
+          fullscreen={true}
+          size="lg"
+          show={modalViewJobs}
+          onHide={() => setModalViewJobs(false)}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title style={{ color: "blue" }}>Tus vacantes:</Modal.Title>
+          </Modal.Header>
+          <Modal.Body style={{ display: "flex", flexWrap: "wrap" }}>
+            {listTrabajosData.length > 0 ? (
+              listTrabajosData.map((trabajo) => {
+                return (
+                  <div
+                    className="card"
+                    style={{ width: "18rem" }}
+                    key={trabajo.id}
+                  >
+                    <img className="card-img-top img" src={trabajo.imagen} />
+                    <div className="card-body">
+                      <h5 className="card-title">{trabajo.name}</h5>
+                      <p className="card-text">{trabajo.descripcion}</p>
+
+                      {/*cuando se presiona el boton, se actualiza la variable de estado listPromociones, que es el arreglo donde se guardan las promociones, cuando ocurre el onClick se ejecuta la funcion deletePromotion, que basicamente es que en el arreglo listPromociones solo se mantienen las promociones que por su id sea diferente al id que se esta iterando*/}
+                      <Button onClick={() => deleteJob(trabajo.id)}>
+                        Eliminar trabajo
+                      </Button>
+                    </div>
+                  </div>
+                );
+              })
+            ) : (
+              <h1 style={{ color: "black" }}>No tienes ninguna vacante</h1>
+            )}
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="primary" onClick={() => setModalViewJobs(false)}>
+              Cerrar
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </div>
       <h1>{titulo}</h1>
       <div ref={FormTrabajos} className="agregar-trabajo">
@@ -138,7 +194,9 @@ export const FormTrabajos = ({ titulo }) => {
           ref={tituloTrabajoValue}
           type="text"
           id="trabajo"
-          onChange={(e) => setTrabajo(e.target.value)}
+          onChange={(e) =>
+            setTrabajosData({ ...trabajosData, name: e.target.value })
+          }
           className="border-b-2 border-blue-500 border-t-0 border-r-0 border-l-0 focus:outline-none"
         />
         <label htmlFor="descripcion">Descripcion:</label>
@@ -147,19 +205,19 @@ export const FormTrabajos = ({ titulo }) => {
           id="descripcion"
           cols="30"
           rows="10"
-          onChange={(e) => setDescripcion(e.target.value)}
+          onChange={(e) =>
+            setTrabajosData({ ...trabajosData, descripcion: e.target.value })
+          }
           className="border-b-2 border-blue-500 border-t-0 border-r-0 border-l-0 focus:outline-none"
         ></textarea>
         <Boton color="primary" texto="insertar vacante" click={insertJob} />
         <Boton
           color="primary"
           texto="visualizar vacantes"
-          click={() => navigete(ListTrabajos)}
+          click={openModalViewJobs}
         />
-        <Boton color="primary" texto="eliminar vacantes" click={deleteJob} />
+        <Boton color="primary" texto="eliminar vacantes" click={deleteJobs} />
       </div>
     </div>
   );
 };
-
-export let trabajos = [];

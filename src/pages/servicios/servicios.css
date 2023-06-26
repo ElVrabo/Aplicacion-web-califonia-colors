@@ -1,0 +1,16 @@
+.container-card-services {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+.body-card-services {
+  display: flex;
+  flex-direction: column;
+}
+.body-card-services img {
+  height: 400px;
+  width: 400px;
+}
+.body-card-services h2 {
+  color: black;
+}

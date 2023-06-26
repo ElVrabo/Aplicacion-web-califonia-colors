@@ -31,6 +31,8 @@
   display: flex;
   justify-content: center;
   width: 50%;
+  background-color: #007bff;
+  border-radius: 10px;
 }
 .link-explorar {
   text-decoration: none;

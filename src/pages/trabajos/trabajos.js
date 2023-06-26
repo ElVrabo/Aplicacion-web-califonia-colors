@@ -1,6 +1,5 @@
 import "./renderTrabajos.css";
-import { trabajos } from "../../components/formTrabajos";
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { Navegacion } from "../../components/Navegacion/Navegacion";
@@ -8,8 +7,11 @@ import carruselImage1 from "../../assets/imagenesCarrusel/carrusel1.jpg";
 import carruselImage2 from "../../assets/imagenesCarrusel/carrusel2.jpg";
 import carruselImage3 from "../../assets/imagenesCarrusel/carrusel3.jpg";
 import { Carrusel } from "../../components/carrusel/carrusel";
+import { TrabajosContext } from "../../context/TrabajosContext";
 
 export const Trabajos = () => {
+  /*variable de estado definido dentro del context, es un array con datos acerca de los trabajos de la empresa*/
+  const { listTrabajosData } = useContext(TrabajosContext);
   const [openChat, setOpenChat] = useState(false);
   const respuesta = useRef();
 
@@ -17,22 +19,21 @@ export const Trabajos = () => {
     setOpenChat(true);
   };
 
-  const trabajosRender = trabajos.map((e) => (
-    <div className="card" style={{ width: "18rem" }}>
-      <img className="card-img-top img" src={e.imagen} />
+  const listTrabajosRender = listTrabajosData.map((trabajo) => (
+    <div className="card" style={{ width: "18rem" }} key={trabajo.id}>
+      <img className="card-img-top img" src={trabajo.imagen} />
       <div className="card-body">
         <h5 className="card-title" style={{ color: "blue" }}>
-          {e.trabajo}
+          {trabajo.name}
         </h5>
-        <p className="card-text">{e.descripcion}</p>
-        <p>{e.precio}</p>
+        <p className="card-text">{trabajo.descripcion}</p>
         <button className="btn-promo" onClick={sendMessage}>
           Me interesa
         </button>
       </div>
     </div>
   ));
-  return trabajos.length > 0 ? (
+  return listTrabajosData.length > 0 ? (
     <>
       <Navegacion />
       <div className="container-empleos">
@@ -143,7 +144,7 @@ export const Trabajos = () => {
           }}
           className="empleo-disponible"
         >
-          {trabajosRender}
+          {listTrabajosRender}
         </div>
       </div>
     </>

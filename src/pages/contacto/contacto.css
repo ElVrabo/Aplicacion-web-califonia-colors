@@ -32,6 +32,11 @@
   gap: 10px;
 }
 
+.btn-send-message {
+  background-color: #007ffb;
+  color: white;
+}
+
 @media (max-width: 576px) {
   .container-icons {
     display: flex;

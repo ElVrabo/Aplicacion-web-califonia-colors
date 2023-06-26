@@ -1,17 +1,17 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import "../agregarpromociones.css";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { Boton } from "./Buttons/Button";
-export let promociones = [];
+import { PromocionesContext } from "../context/PromocionesContext";
 
 export const FormPromociones = () => {
-  const [promocionesData, setPromocionesData] = useState({
-    imagen: "",
-    titulo: "",
-    descripcion: "",
-    precio: "",
-  });
+  const {
+    promocionesData,
+    setPromocionesData,
+    listPromociones,
+    setListPromociones,
+  } = useContext(PromocionesContext);
   const [modal, setModal] = useState(false);
   const [modalError, setModalError] = useState(false);
   const [modalDelete, setModalDelete] = useState(false);
@@ -58,14 +58,14 @@ export const FormPromociones = () => {
       formRefs.current.descripcionRef.current.value &&
       formRefs.current.precioRef.current.value
     ) {
-      let nuevaPromocion = {
-        id: promociones.length,
+      let newPromocion = {
+        id: listPromociones.length,
         imagen: promocionesData.imagen,
         titulo: promocionesData.titulo,
         descripcion: promocionesData.descripcion,
         precio: promocionesData.precio,
       };
-      promociones = [...promociones, nuevaPromocion];
+      setListPromociones([...listPromociones, newPromocion]);
       resetInputs();
       setModal(true);
       setModalError(false);
@@ -76,12 +76,18 @@ export const FormPromociones = () => {
   };
 
   const deleteAllPromotions = () => {
-    if (promociones.length === 0) {
+    if (listPromociones.length === 0) {
       setModalDeleteError(true);
     } else {
-      promociones = [];
+      setListPromociones([]);
       setModalDelete(true);
     }
+  };
+
+  const deletePromotion = (id) => {
+    setListPromociones(
+      listPromociones.filter((promocion) => promocion.id !== id)
+    );
   };
 
   return (
@@ -147,20 +153,31 @@ export const FormPromociones = () => {
             onHide={() => setModalViewPromotions(false)}
           >
             <Modal.Header closeButton>
-              <Modal.Title style={{ color: "green" }}>
+              <Modal.Title style={{ color: "blue" }}>
                 Tus promociones:
               </Modal.Title>
             </Modal.Header>
             <Modal.Body style={{ display: "flex", flexWrap: "wrap" }}>
-              {promociones.length > 0 ? (
-                promociones.map((e) => {
+              {listPromociones.length > 0 ? (
+                listPromociones.map((promocion) => {
                   return (
-                    <div className="card" style={{ width: "18rem" }} key={e.id}>
-                      <img className="card-img-top img" src={e.imagen} />
+                    <div
+                      className="card"
+                      style={{ width: "18rem" }}
+                      key={promocion.id}
+                    >
+                      <img
+                        className="card-img-top img"
+                        src={promocion.imagen}
+                      />
                       <div className="card-body">
-                        <h5 className="card-title">{e.titulo}</h5>
-                        <p className="card-text">{e.descripcion}</p>
-                        <p>{e.precio}</p>
+                        <h5 className="card-title">{promocion.titulo}</h5>
+                        <p className="card-text">{promocion.descripcion}</p>
+                        <p>{promocion.precio}</p>
+                        {/*cuando se presiona el boton, se actualiza la variable de estado listPromociones, que es el arreglo donde se guardan las promociones, cuando ocurre el onClick se ejecuta la funcion deletePromotion, que basicamente es que en el arreglo listPromociones solo se mantienen las promociones que por su id sea diferente al id que se esta iterando*/}
+                        <Button onClick={() => deletePromotion(promocion.id)}>
+                          Eliminar promocion
+                        </Button>
                       </div>
                     </div>
                   );

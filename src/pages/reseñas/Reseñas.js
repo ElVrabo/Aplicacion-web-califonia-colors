@@ -3,6 +3,8 @@ import "./reseñas.css";
 import { Navegacion } from "../../components/Navegacion/Navegacion";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import { CardReseñas } from "./CardReseñas";
+import iconMessaje from "../../assets/icons/hablando.png";
 
 export const Reseñas = () => {
   const [comentario, setComentario] = useState("");
@@ -23,6 +25,12 @@ export const Reseñas = () => {
   return (
     <>
       <Navegacion />
+      <CardReseñas
+        imgCardReseñas={iconMessaje}
+        textCardReseñas="En este apartado de comentarios se podra dar una opinion acerca del servicio que se ofrece en california colors. Esto con el objetivo de que se tenga una buena referencia del usuario hacia los servicios. La importancia es que los clientes tengan esa confianza de que en nuestra empresa ofrecemos lo mejor."
+        clickCardReseñas="#comentarios"
+        textLinkReseñas="Hacer un comentario"
+      />
       <div className="container-modals">
         <Modal show={viewModalExit} onHide={() => setViewModalExit(false)}>
           <Modal.Header closeButton>
@@ -53,7 +61,7 @@ export const Reseñas = () => {
         </Modal>
       </div>
 
-      <div className="container-comentarios">
+      <div className="container-comentarios" id="comentarios">
         {comentarios.length === 0 ? (
           <h1>¡No hay ningún comentario!</h1>
         ) : (
@@ -66,7 +74,7 @@ export const Reseñas = () => {
             className="border-b-2 border-blue-500 border-t-0 border-r-0 border-l-0 focus:outline-none"
           ></textarea>
           <button
-            className="bg-blue-500 hover:bg-blue-700 w-50 text-white text-decoration-none text-center rounded-md"
+            className="btn-insert-comment"
             onClick={() => {
               /*El arreglo destructurado [...comentarios,comentario] es una forma de agregar un elemento nuevo al final del arreglo comentarios. Esto se logra creando un nuevo arreglo que contenga los elementos del original, para esto se usa el [...comentarios] seguidos del nuevo elemento (comentario)*/
               if (comentario) {

@@ -1,33 +1,17 @@
 import "../../Promociones.css";
-
-import { useEffect, useState } from "react";
-import { promociones } from "../../components/formPromociones";
-import { Navegacion } from "../../components/Navegacion/Navegacion";
 import { Carrusel } from "../../components/carrusel/carrusel";
 import ImageAhorrar from "../../assets/imagenesCarrusel/ahorrar.jpg";
 import ImageComprar from "../../assets/imagenesCarrusel/compras.jpg";
 import ImageAuto from "../../assets/imagenesCarrusel/auto.jpg";
+import { useContext } from "react";
+import { Navegacion } from "../../components/Navegacion/Navegacion";
+import { PromocionesContext } from "../../context/PromocionesContext";
+import { ListPromociones } from "./ListPromociones";
 
 export const Promociones = () => {
-  const [promocionesList, setPromocionesList] = useState([]);
+  const { listPromociones } = useContext(PromocionesContext);
 
-  useEffect(() => {
-    setPromocionesList(promociones);
-  }, [promociones]);
-
-  const promocionesRender = promocionesList.map((e) => (
-    <div className="card" style={{ width: "18rem" }} key={e.id}>
-      <img className="card-img-top img" src={e.imagen} />
-      <div className="card-body">
-        <h5 className="card-title">{e.titulo}</h5>
-        <p className="card-text">{e.descripcion}</p>
-        <p>{e.precio}</p>
-        <button className="btn-promo">Mas informacion</button>
-      </div>
-    </div>
-  ));
-
-  return promocionesList.length > 0 ? (
+  return listPromociones.length > 0 ? (
     <>
       <Navegacion />
       <div className="container-carrusel">
@@ -43,7 +27,12 @@ export const Promociones = () => {
         />
       </div>
       <div id="promociones" className="container-promociones">
-        {promocionesRender}
+        <ListPromociones
+          click={() => {
+            alert("si");
+          }}
+          textButton="informacion"
+        />
       </div>
     </>
   ) : (
