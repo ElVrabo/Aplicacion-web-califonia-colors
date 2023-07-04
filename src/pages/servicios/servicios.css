@@ -2,14 +2,15 @@
   margin-top: 10px;
   display: flex;
   justify-content: center;
+  gap: 20px;
 }
 .body-card-services {
   display: flex;
   flex-direction: column;
 }
 .body-card-services img {
-  height: 400px;
-  width: 400px;
+  height: 300px;
+  width: 300px;
 }
 .body-card-services h2 {
   color: black;

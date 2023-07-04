@@ -8,6 +8,7 @@ import carruselImage2 from "../../assets/imagenesCarrusel/carrusel2.jpg";
 import carruselImage3 from "../../assets/imagenesCarrusel/carrusel3.jpg";
 import { Carrusel } from "../../components/carrusel/carrusel";
 import { TrabajosContext } from "../../context/TrabajosContext";
+import { ListTrabajos } from "./ListTrabajos";
 
 export const Trabajos = () => {
   /*variable de estado definido dentro del context, es un array con datos acerca de los trabajos de la empresa*/
@@ -19,20 +20,6 @@ export const Trabajos = () => {
     setOpenChat(true);
   };
 
-  const listTrabajosRender = listTrabajosData.map((trabajo) => (
-    <div className="card" style={{ width: "18rem" }} key={trabajo.id}>
-      <img className="card-img-top img" src={trabajo.imagen} />
-      <div className="card-body">
-        <h5 className="card-title" style={{ color: "blue" }}>
-          {trabajo.name}
-        </h5>
-        <p className="card-text">{trabajo.descripcion}</p>
-        <button className="btn-promo" onClick={sendMessage}>
-          Me interesa
-        </button>
-      </div>
-    </div>
-  ));
   return listTrabajosData.length > 0 ? (
     <>
       <Navegacion />
@@ -144,7 +131,7 @@ export const Trabajos = () => {
           }}
           className="empleo-disponible"
         >
-          {listTrabajosRender}
+          <ListTrabajos handleClick={sendMessage} />
         </div>
       </div>
     </>
@@ -160,14 +147,14 @@ export const Trabajos = () => {
           secondImage={carruselImage2}
           thirdImage={carruselImage3}
           redireccion="#trabajos"
-          textoRedireccion="Ver vacamtes"
+          textoRedireccion="Ver vacantes"
         />
       </div>
 
       <div className="icon-error">
         <ion-icon name="close-circle-outline"></ion-icon>
       </div>
-      <h1 id="trabajos" style={{ color: "blue", textAlign: "center" }}>
+      <h1 id="trabajos" style={{ color: "black", textAlign: "center" }}>
         ¡Por el momento no hay vacantes disponibles!
       </h1>
     </>

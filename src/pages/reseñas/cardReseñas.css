@@ -16,7 +16,8 @@
   width: 200px;
 }
 .body-reseñas p {
-  text-align: justify;
+  text-align: center;
+  color: black;
 }
 
 .btn-view-comments {

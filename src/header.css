@@ -49,12 +49,12 @@
   align-items: center;
 }
 .container-about h2 {
-  color: blue;
+  color: black;
   font-family: cursive;
 }
 .container-about p {
   text-align: justify;
-  color: blue;
+  color: black;
 }
 
 /*diseño para dispositivos moviles inteligentes antiguos*/

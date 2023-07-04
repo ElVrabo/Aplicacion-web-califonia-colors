@@ -27,12 +27,7 @@ export const Promociones = () => {
         />
       </div>
       <div id="promociones" className="container-promociones">
-        <ListPromociones
-          click={() => {
-            alert("si");
-          }}
-          textButton="informacion"
-        />
+        <ListPromociones />
       </div>
     </>
   ) : (
@@ -54,12 +49,19 @@ export const Promociones = () => {
         id="promociones"
         style={{
           display: "flex",
+          flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
         }}
         className="text-promociones"
       >
-        <h1 style={{ color: "blue", textAlign: "center" }}>
+        <div className="icon-error">
+          <ion-icon
+            style={{ color: "red" }}
+            name="close-circle-outline"
+          ></ion-icon>
+        </div>
+        <h1 style={{ color: "black", textAlign: "center" }}>
           ¡No hay promociones disponibles!
         </h1>
       </div>

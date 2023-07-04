@@ -5,6 +5,7 @@ import firstImageCarrusel from "../../assets/cristales.jpg";
 import secondImageCarrusel from "../../assets/mecanica.jpg";
 import thirdImageCarrusel from "../../assets/seccionesdañadas.jpg";
 import iconMecanico from "../../assets/icons/146manmechanic2_100581.png";
+import iconOferta from "../../assets/icons/oferta.png";
 import Button from "react-bootstrap/Button";
 
 export const Servicios = () => {
@@ -41,6 +42,13 @@ export const Servicios = () => {
         <div className="body-card-services">
           <img src={iconMecanico} alt="" />
           <h4>Pregunta por todos nuestros servicios</h4>
+          <Button onClick={openWhatsApp} variant="primary">
+            Informacion
+          </Button>
+        </div>
+        <div className="body-card-services">
+          <img src={iconOferta} alt="" />
+          <h4>Aprovecha nuestras mejores promociones</h4>
           <Button onClick={openWhatsApp} variant="primary">
             Informacion
           </Button>
