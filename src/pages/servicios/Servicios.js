@@ -4,8 +4,10 @@ import { Carrusel } from "../../components/carrusel/carrusel";
 import firstImageCarrusel from "../../assets/cristales.jpg";
 import secondImageCarrusel from "../../assets/mecanica.jpg";
 import thirdImageCarrusel from "../../assets/seccionesdañadas.jpg";
-import iconMecanico from "../../assets/icons/146manmechanic2_100581.png";
-import iconOferta from "../../assets/icons/oferta.png";
+import imageMecanica from "../../assets/mecanicaPexels.jpg";
+import imagePintura from "../../assets/pinturaPexels.jpg";
+import imageElectrico from "../../assets/electrico.jpg";
+import imageTapiceria from "../../assets/tapiceriaPexels.jpg";
 import Button from "react-bootstrap/Button";
 
 export const Servicios = () => {
@@ -14,10 +16,9 @@ export const Servicios = () => {
     return phoneNumber;
   }
 
-  function openWhatsApp() {
+  function getServicio(servicio) {
     const phoneNumber = numberWhatsApp();
-    const message =
-      "Hola, me podria proporcionar los servicios que ofrecen. Por favor.";
+    const message = `Hola, me podria proporcionar los servicios de ${servicio} que ofrecen. Por favor.`;
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
       message
     )}`;
@@ -39,17 +40,31 @@ export const Servicios = () => {
         />
       </div>
       <div className="container-card-services">
-        <div className="body-card-services">
-          <img src={iconMecanico} alt="" />
-          <h4>Pregunta por todos nuestros servicios</h4>
-          <Button onClick={openWhatsApp} variant="primary">
+        <div id="servicios" className="body-card-services">
+          <img src={imageMecanica} alt="" />
+          <h4>Mecanica</h4>
+          <Button onClick={() => getServicio("Mecanica")} variant="primary">
             Informacion
           </Button>
         </div>
         <div className="body-card-services">
-          <img src={iconOferta} alt="" />
-          <h4>Aprovecha nuestras mejores promociones</h4>
-          <Button onClick={openWhatsApp} variant="primary">
+          <img src={imagePintura} alt="" />
+          <h4>Pintura</h4>
+          <Button onClick={() => getServicio("Pintura")} variant="primary">
+            Informacion
+          </Button>
+        </div>
+        <div className="body-card-services">
+          <img src={imageElectrico} alt="" />
+          <h4>Electrico</h4>
+          <Button onClick={() => getServicio("Electricidad")} variant="primary">
+            Informacion
+          </Button>
+        </div>
+        <div className="body-card-services">
+          <img src={imageTapiceria} alt="" />
+          <h4>Tapiceria</h4>
+          <Button onClick={() => getServicio("Tapiceria")} variant="primary">
             Informacion
           </Button>
         </div>

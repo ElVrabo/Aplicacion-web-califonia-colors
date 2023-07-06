@@ -3,8 +3,6 @@ import "./reseñas.css";
 import { Navegacion } from "../../components/Navegacion/Navegacion";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import { CardReseñas } from "./CardReseñas";
-import iconMessaje from "../../assets/icons/hablando.png";
 
 export const Reseñas = () => {
   const [comentario, setComentario] = useState("");
@@ -25,12 +23,6 @@ export const Reseñas = () => {
   return (
     <>
       <Navegacion />
-      <CardReseñas
-        imgCardReseñas={iconMessaje}
-        textCardReseñas="En este apartado de comentarios se podra dar una opinion acerca del servicio que se ofrece en california colors. Esto con el objetivo de que se tenga una buena referencia del usuario hacia los servicios. La importancia es que los clientes tengan esa confianza de que en nuestra empresa ofrecemos lo mejor."
-        clickCardReseñas="#comentarios"
-        textLinkReseñas="Hacer un comentario"
-      />
       <div className="container-modals">
         <Modal show={viewModalExit} onHide={() => setViewModalExit(false)}>
           <Modal.Header closeButton>
