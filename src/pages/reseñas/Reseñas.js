@@ -9,7 +9,7 @@ export const Reseñas = () => {
   const [comentarios, setComentarios] = useState([]);
   const [viewModalExit, setViewModalExit] = useState(false);
   const [viewModalError, setViewModalError] = useState(false);
-  const textarea = useRef();
+  const inputComentario = useRef();
 
   /*se recorre el arreglo*/
   const comentariosRender = comentarios.map((comentario, index) => {
@@ -55,25 +55,27 @@ export const Reseñas = () => {
 
       <div className="container-comentarios" id="comentarios">
         {comentarios.length === 0 ? (
-          <h1>¡No hay ningún comentario!</h1>
+          <h1 style={{ color: "black" }}>Comentarios</h1>
         ) : (
           comentariosRender
         )}
         <div className="formulario-comentarios">
-          <textarea
-            ref={textarea}
+          <input
+            type="text"
+            ref={inputComentario}
             onChange={(e) => setComentario(e.target.value)}
-            className="border-b-2 border-blue-500 border-t-0 border-r-0 border-l-0 focus:outline-none"
-          ></textarea>
+            className="input-comentarios"
+            placeholder="Ingresa tu comentario"
+          />
           <button
             className="btn-insert-comment"
             onClick={() => {
               /*El arreglo destructurado [...comentarios,comentario] es una forma de agregar un elemento nuevo al final del arreglo comentarios. Esto se logra creando un nuevo arreglo que contenga los elementos del original, para esto se usa el [...comentarios] seguidos del nuevo elemento (comentario)*/
-              if (comentario) {
+              if (inputComentario.current.value) {
                 /*se crea un nuevo arreglo con los elementos del anterior y se le agrega un nuevo valor (comentario)*/
                 setComentarios([...comentarios, comentario]);
                 setViewModalExit(true);
-                textarea.current.value = "";
+                inputComentario.current.value = "";
               } else {
                 setViewModalError(true);
               }

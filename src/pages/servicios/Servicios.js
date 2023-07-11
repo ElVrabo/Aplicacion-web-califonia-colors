@@ -1,29 +1,21 @@
 import "./servicios.css";
 import { Navegacion } from "../../components/Navegacion/Navegacion";
 import { Carrusel } from "../../components/carrusel/carrusel";
-import firstImageCarrusel from "../../assets/cristales.jpg";
-import secondImageCarrusel from "../../assets/mecanica.jpg";
-import thirdImageCarrusel from "../../assets/seccionesdañadas.jpg";
-import imageMecanica from "../../assets/mecanicaPexels.jpg";
-import imagePintura from "../../assets/pinturaPexels.jpg";
-import imageElectrico from "../../assets/electrico.jpg";
-import imageTapiceria from "../../assets/tapiceriaPexels.jpg";
-import Button from "react-bootstrap/Button";
+import firstImageCarrusel from "../../assets/motor.jpg";
+import secondImageCarrusel from "../../assets/kilometraje.jpg";
+import thirdImageCarrusel from "../../assets/carroPexels.jpg";
+import { useContext, useEffect, useState } from "react";
+import { ServiciosContext } from "../../context/ServiciosContext";
+import serviciosMecanica from "../../utils/serviciosMecanica";
+import { Link } from "react-router-dom";
 
 export const Servicios = () => {
-  function numberWhatsApp() {
-    const phoneNumber = "2412477577";
-    return phoneNumber;
-  }
+  const { servicios, setServicios } = useContext(ServiciosContext);
 
-  function getServicio(servicio) {
-    const phoneNumber = numberWhatsApp();
-    const message = `Hola, me podria proporcionar los servicios de ${servicio} que ofrecen. Por favor.`;
-    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
-      message
-    )}`;
-    window.location.href = url;
-  }
+  useEffect(() => {
+    setServicios(serviciosMecanica);
+  }, []);
+
   return (
     <>
       <Navegacion />
@@ -31,7 +23,7 @@ export const Servicios = () => {
         <Carrusel
           firstTitle="Ofrecemos los mejores servicios"
           secondTitle="De muy buena calidad"
-          thirdTitle="Servicios accesibles"
+          thirdTitle="Servicios excelentes"
           firstImage={firstImageCarrusel}
           secondImage={secondImageCarrusel}
           thirdImage={thirdImageCarrusel}
@@ -40,34 +32,15 @@ export const Servicios = () => {
         />
       </div>
       <div className="container-card-services">
-        <div id="servicios" className="body-card-services">
-          <img src={imageMecanica} alt="" />
-          <h4>Mecanica</h4>
-          <Button onClick={() => getServicio("Mecanica")} variant="primary">
-            Informacion
-          </Button>
-        </div>
-        <div className="body-card-services">
-          <img src={imagePintura} alt="" />
-          <h4>Pintura</h4>
-          <Button onClick={() => getServicio("Pintura")} variant="primary">
-            Informacion
-          </Button>
-        </div>
-        <div className="body-card-services">
-          <img src={imageElectrico} alt="" />
-          <h4>Electrico</h4>
-          <Button onClick={() => getServicio("Electricidad")} variant="primary">
-            Informacion
-          </Button>
-        </div>
-        <div className="body-card-services">
-          <img src={imageTapiceria} alt="" />
-          <h4>Tapiceria</h4>
-          <Button onClick={() => getServicio("Tapiceria")} variant="primary">
-            Informacion
-          </Button>
-        </div>
+        {servicios.map((servicio) => (
+          <div className="body-card-services" key={servicio.id}>
+            <img src={servicio.image} alt="imagen" />
+            <h2>{servicio.nombre}</h2>
+            <Link className="link-detalles" to={`/servicios/${servicio.id}`}>
+              Ver detalles
+            </Link>
+          </div>
+        ))}
       </div>
     </>
   );

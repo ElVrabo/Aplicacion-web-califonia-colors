@@ -12,6 +12,7 @@ import {
   PageAdmin,
   ListTrabajos,
   ListComentarios,
+  SERVICIOID,
 } from "./paths";
 import { Home } from "../../pages/Home/Home";
 import { Promociones } from "../../pages/promociones/promociones";
@@ -22,6 +23,8 @@ import { Contacto } from "../../pages/contacto/Contacto";
 import { Login } from "../../pages/Login/Login";
 import { PromocionesContextProvider } from "../../context/PromocionesContext";
 import { TrabajosContextProvider } from "../../context/TrabajosContext";
+import { ServiciosContextProvider } from "../../context/ServiciosContext";
+import ServiciosDetail from "../../pages/serviciosDetails/ServiciosDetails";
 
 export const AppRouter = () => {
   return (
@@ -29,18 +32,21 @@ export const AppRouter = () => {
     <UserContextProvider>
       <PromocionesContextProvider>
         <TrabajosContextProvider>
-          <Routes>
-            <Route path={HOME} element={<Home />} />
-            <Route path={ListPromociones} element={<Promociones />} />
-            <Route path={CATALOGOSERVICIOS} element={<Servicios />} />
-            <Route path={ListTrabajos} element={<Trabajos />} />
-            <Route path={ListComentarios} element={<Reseñas />} />
-            <Route path={CONTACTO} element={<Contacto />} />
-            <Route path={HOJALATERIA} element={<ScreenHojalateria />} />
-            <Route path={LOGIN} element={<Login />} />
+          <ServiciosContextProvider>
+            <Routes>
+              <Route path={HOME} element={<Home />} />
+              <Route path={ListPromociones} element={<Promociones />} />
+              <Route path={CATALOGOSERVICIOS} element={<Servicios />} />
+              <Route path={SERVICIOID} element={<ServiciosDetail />} />
+              <Route path={ListTrabajos} element={<Trabajos />} />
+              <Route path={ListComentarios} element={<Reseñas />} />
+              <Route path={CONTACTO} element={<Contacto />} />
+              <Route path={HOJALATERIA} element={<ScreenHojalateria />} />
+              <Route path={LOGIN} element={<Login />} />
 
-            <Route path={PageAdmin} element={<ViewAdmin />} />
-          </Routes>
+              <Route path={PageAdmin} element={<ViewAdmin />} />
+            </Routes>
+          </ServiciosContextProvider>
         </TrabajosContextProvider>
       </PromocionesContextProvider>
     </UserContextProvider>
