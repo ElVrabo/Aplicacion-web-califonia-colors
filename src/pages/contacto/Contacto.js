@@ -69,8 +69,8 @@ export const Contacto = () => {
               src={iconoWhatsapp}
               alt=""
               onClick={() => {
-                const phoneNumber = "2412477577";
-                const message = "Hola, tengo una pregunta.";
+                const phoneNumber = "2411314735";
+                const message = "Hola, quisiera comunicarme con ustedes.";
                 const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
                   message
                 )}`;

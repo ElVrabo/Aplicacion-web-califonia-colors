@@ -13,7 +13,7 @@ const ServiciosDetail = () => {
     (servicio) => servicio.id == servicioID
   );
   function openWhatsApp(servicio) {
-    const number = 2412477577;
+    const number = 2411314735;
     const message = `Hola, me podrian proporcionar informacion sobre lo que ofreces de ${servicio}. Por favor.`;
     const url = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
     window.location.href = url;

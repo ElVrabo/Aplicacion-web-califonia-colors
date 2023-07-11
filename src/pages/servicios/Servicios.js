@@ -31,7 +31,7 @@ export const Servicios = () => {
           textoRedireccion="Ver"
         />
       </div>
-      <div className="container-card-services">
+      <div id="servicios" className="container-card-services">
         {servicios.map((servicio) => (
           <div className="body-card-services" key={servicio.id}>
             <img src={servicio.image} alt="imagen" />
