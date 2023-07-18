@@ -6,5 +6,4 @@ export const LOGIN = "/login";
 export const ListTrabajos = "/trabajos";
 export const ListComentarios = "/comentarios";
 export const CONTACTO = "/contacto";
-export const HOJALATERIA = "/hojalateria";
 export const PageAdmin = "/administrador";

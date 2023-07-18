@@ -1,11 +1,9 @@
 import { Route, Routes } from "react-router-dom";
 import { UserContextProvider } from "../../context/UserContext";
-import { ScreenHojalateria } from "../../pages/ScreenHojalateria";
 import { ViewAdmin } from "../../layouts/viewAdmin";
 import {
   CATALOGOSERVICIOS,
   CONTACTO,
-  HOJALATERIA,
   HOME,
   LOGIN,
   ListPromociones,
@@ -41,7 +39,7 @@ export const AppRouter = () => {
               <Route path={ListTrabajos} element={<Trabajos />} />
               <Route path={ListComentarios} element={<Reseñas />} />
               <Route path={CONTACTO} element={<Contacto />} />
-              <Route path={HOJALATERIA} element={<ScreenHojalateria />} />
+
               <Route path={LOGIN} element={<Login />} />
 
               <Route path={PageAdmin} element={<ViewAdmin />} />

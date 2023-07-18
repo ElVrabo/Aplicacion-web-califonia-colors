@@ -32,8 +32,8 @@ const ServiciosDetail = () => {
                 ? "Recomendado"
                 : "No recomendado"}
             </p>
-            <p style={{ color: "black", marginTop: "10px" }}>
-              {servicioSeleccionado.nombre}
+            <p style={{ color: "black" }}>
+              {`Servicios de ${servicioSeleccionado.nombre}`}
             </p>
             <div className="puntuacion-service">
               <img
@@ -57,17 +57,18 @@ const ServiciosDetail = () => {
                 alt=""
               />
             </div>
-            <p
-              style={{
-                color: "black",
-                marginTop: "10px",
-              }}
-            >
-              {servicioSeleccionado.descripcion}
-            </p>
+
+            <div className="lista-servicios">
+              {servicioSeleccionado.servicios.map((servicio) => (
+                <ol key={servicio}>
+                  <li style={{ color: "black" }}>{`✅${servicio}`}</li>
+                </ol>
+              ))}
+            </div>
             <Button
               onClick={() => openWhatsApp(servicioSeleccionado.nombre)}
               variant="primary"
+              style={{ width: "auto" }}
             >
               Informacion
             </Button>

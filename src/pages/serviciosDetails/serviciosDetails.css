@@ -11,7 +11,7 @@
   border-radius: 10px;
   gap: 20px;
   align-items: center;
-  height: 500px;
+  height: 700px;
   padding: 25px;
 }
 .image-service-details {
@@ -33,6 +33,9 @@
 }
 .puntuacion-service {
   display: flex;
+}
+.lista-servicios {
+  margin-top: 20px;
 }
 
 @media (min-width: 320px) and (max-width: 767px) {
