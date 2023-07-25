@@ -1,13 +1,15 @@
 import "./serviciosDetails.css";
-import { useContext } from "react";
-import { useParams } from "react-router-dom";
-import { ServiciosContext } from "../../context/ServiciosContext";
 import Button from "react-bootstrap/Button";
+import { useContext } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { ServiciosContext } from "../../context/ServiciosContext";
 import puntuacionServicio from "./puntuacionServicio";
+import { CATALOGOSERVICIOS } from "../../config/router/paths";
 
 const ServiciosDetail = () => {
   const { servicios } = useContext(ServiciosContext);
   let { servicioID } = useParams();
+  const navigete = useNavigate()
 
   let servicioSeleccionado = servicios.find(
     (servicio) => servicio.id == servicioID
@@ -65,13 +67,18 @@ const ServiciosDetail = () => {
                 </ol>
               ))}
             </div>
+            <div className="btns-details">
             <Button
               onClick={() => openWhatsApp(servicioSeleccionado.nombre)}
               variant="primary"
-              style={{ width: "auto" }}
+              
             >
-              Informacion
+              Me interesa
             </Button>
+            <Button variant="primary" onClick={()=>{
+              navigete(CATALOGOSERVICIOS)
+            }}>Regresar</Button>
+            </div>
           </div>
         </div>
       </div>

@@ -10,6 +10,7 @@ export const PromocionesContextProvider = ({ children }) => {
     precio: "",
   });
   const [listPromociones, setListPromociones] = useState([]);
+  
 
   return (
     <PromocionesContext.Provider

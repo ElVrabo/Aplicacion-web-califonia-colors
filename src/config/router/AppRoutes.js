@@ -23,6 +23,7 @@ import { PromocionesContextProvider } from "../../context/PromocionesContext";
 import { TrabajosContextProvider } from "../../context/TrabajosContext";
 import { ServiciosContextProvider } from "../../context/ServiciosContext";
 import ServiciosDetail from "../../pages/serviciosDetails/ServiciosDetails";
+import { ResenasContextProvider } from "../../context/ReseñasContext";
 
 export const AppRouter = () => {
   return (
@@ -30,6 +31,7 @@ export const AppRouter = () => {
     <UserContextProvider>
       <PromocionesContextProvider>
         <TrabajosContextProvider>
+          <ResenasContextProvider>
           <ServiciosContextProvider>
             <Routes>
               <Route path={HOME} element={<Home />} />
@@ -45,6 +47,7 @@ export const AppRouter = () => {
               <Route path={PageAdmin} element={<ViewAdmin />} />
             </Routes>
           </ServiciosContextProvider>
+            </ResenasContextProvider>
         </TrabajosContextProvider>
       </PromocionesContextProvider>
     </UserContextProvider>

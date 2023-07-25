@@ -3,18 +3,21 @@ import "./reseñas.css";
 import { Navegacion } from "../../components/Navegacion/Navegacion";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import { useContext } from "react";
+import { ResenasContext } from "../../context/ReseñasContext";
+
 
 export const Reseñas = () => {
-  const [comentario, setComentario] = useState("");
-  const [comentarios, setComentarios] = useState([]);
+
   const [viewModalExit, setViewModalExit] = useState(false);
   const [viewModalError, setViewModalError] = useState(false);
   const inputComentario = useRef();
+  const{comentario,setComentario,listComentarios,setListComentarios} = useContext(ResenasContext)
 
   /*se recorre el arreglo*/
-  const comentariosRender = comentarios.map((comentario, index) => {
+  const comentariosRender = listComentarios.map((comentario,index) => {
     return (
-      <div key={index} className="cards-comentarios">
+      <div key={index}  className="cards-comentarios">
         <div className="card">{comentario}</div>
       </div>
     );
@@ -54,7 +57,7 @@ export const Reseñas = () => {
       </div>
 
       <div className="container-comentarios" id="comentarios">
-        {comentarios.length === 0 ? (
+        {listComentarios.length === 0 ? (
           <h1 style={{ color: "black" }}>Comentarios</h1>
         ) : (
           comentariosRender
@@ -72,8 +75,10 @@ export const Reseñas = () => {
             onClick={() => {
               /*El arreglo destructurado [...comentarios,comentario] es una forma de agregar un elemento nuevo al final del arreglo comentarios. Esto se logra creando un nuevo arreglo que contenga los elementos del original, para esto se usa el [...comentarios] seguidos del nuevo elemento (comentario)*/
               if (inputComentario.current.value) {
+                
                 /*se crea un nuevo arreglo con los elementos del anterior y se le agrega un nuevo valor (comentario)*/
-                setComentarios([...comentarios, comentario]);
+                setListComentarios([...listComentarios, comentario]);
+                
                 setViewModalExit(true);
                 inputComentario.current.value = "";
               } else {

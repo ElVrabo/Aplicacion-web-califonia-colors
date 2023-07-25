@@ -7,10 +7,10 @@ export const ListTrabajos = ({ handleClick }) => {
     <div className="card" style={{ width: "18rem" }} key={trabajo.id}>
       <img className="card-img-top img" src={trabajo.imagen} />
       <div className="card-body">
-        <h5 className="card-title" style={{ color: "blue" }}>
+        <p  style={{ color: "black",fontFamily:"sans-serif" }}>
           {trabajo.name}
-        </h5>
-        <p className="card-text">{trabajo.descripcion}</p>
+        </p>
+        <p style={{color:"black",fontFamily:"monospace"}} >{trabajo.descripcion}</p>
         <button className="btn-promo" onClick={handleClick}>
           Me interesa
         </button>

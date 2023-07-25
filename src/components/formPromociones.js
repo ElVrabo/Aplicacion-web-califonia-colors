@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useRef, useState} from "react";
 import "../agregarpromociones.css";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
@@ -30,6 +30,9 @@ export const FormPromociones = () => {
     formRefs.current.descripcionRef.current.value = "";
     formRefs.current.precioRef.current.value = "";
   };
+ 
+
+  
   const handleFile = (event) => {
     /*se obtiene la imagen seleccionada mediante la propiedad target.files[0]*/
     const image = event.target.files[0];
@@ -171,9 +174,9 @@ export const FormPromociones = () => {
                         src={promocion.imagen}
                       />
                       <div className="card-body">
-                        <h5 className="card-title">{promocion.titulo}</h5>
-                        <p className="card-text">{promocion.descripcion}</p>
-                        <p>{promocion.precio}</p>
+                        <h5 style={{fontFamily:"sans-serif"}} className="card-title">{promocion.titulo}</h5>
+                        <p style={{color:"black",fontFamily:"monospace"}}>{promocion.descripcion}</p>
+                        <p style={{color:"black",fontFamily:"monospace"}}>{promocion.precio}</p>
                         {/*cuando se presiona el boton, se actualiza la variable de estado listPromociones, que es el arreglo donde se guardan las promociones, cuando ocurre el onClick se ejecuta la funcion deletePromotion, que basicamente es que en el arreglo listPromociones solo se mantienen las promociones que por su id sea diferente al id que se esta iterando*/}
                         <Button onClick={() => deletePromotion(promocion.id)}>
                           Eliminar promocion
@@ -196,7 +199,7 @@ export const FormPromociones = () => {
             </Modal.Footer>
           </Modal>
         </div>
-        <h1>¡Agrega una promocion!</h1>
+        <h1 style={{fontFamily:"sans-serif"}}>¡Agrega una promocion!</h1>
         <div className="agregar-promocion">
           <label htmlFor="imagen">Añade una imagen:</label>
           <input

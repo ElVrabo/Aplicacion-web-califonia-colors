@@ -38,6 +38,15 @@
   margin-top: 20px;
 }
 
+.btns-details{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  width: 700px;
+}
+.btns-details Button{
+  width: 200px;
+}
 @media (min-width: 320px) and (max-width: 767px) {
   .body-card-details {
     display: flex;

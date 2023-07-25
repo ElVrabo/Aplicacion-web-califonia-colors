@@ -1,5 +1,6 @@
 .imagen-carrusel {
   height: 500px;
+  filter: brightness(0.4);
 }
 .title-carrusel {
   color: white;

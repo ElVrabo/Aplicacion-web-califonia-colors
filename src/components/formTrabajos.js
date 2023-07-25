@@ -4,7 +4,6 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { Boton } from "./Buttons/Button";
 import { useNavigate } from "react-router-dom";
-import { ListTrabajos } from "../config/router/paths";
 import { TrabajosContext } from "../context/TrabajosContext";
 export const FormTrabajos = ({ titulo }) => {
   const {
@@ -48,10 +47,11 @@ export const FormTrabajos = ({ titulo }) => {
       let newTrabajo = {
         id: listTrabajosData.length,
         imagen: trabajosData.imagen,
-        trabajo: trabajosData.name,
+        name: trabajosData.name,
         descripcion: trabajosData.descripcion,
       };
       setListTrabajosData([...listTrabajosData, newTrabajo]);
+     
 
       setAddExit(true);
       resetInputs();
@@ -152,8 +152,8 @@ export const FormTrabajos = ({ titulo }) => {
                   >
                     <img className="card-img-top img" src={trabajo.imagen} />
                     <div className="card-body">
-                      <h5 className="card-title">{trabajo.name}</h5>
-                      <p className="card-text">{trabajo.descripcion}</p>
+                      <p  style={{color:"black",fontFamily:"sans-serif"}}>{trabajo.name}</p>
+                      <p style={{color:"black",fontFamily:"monospace"}}>{trabajo.descripcion}</p>
 
                       {/*cuando se presiona el boton, se actualiza la variable de estado listPromociones, que es el arreglo donde se guardan las promociones, cuando ocurre el onClick se ejecuta la funcion deletePromotion, que basicamente es que en el arreglo listPromociones solo se mantienen las promociones que por su id sea diferente al id que se esta iterando*/}
                       <Button onClick={() => deleteJob(trabajo.id)}>
@@ -174,7 +174,7 @@ export const FormTrabajos = ({ titulo }) => {
           </Modal.Footer>
         </Modal>
       </div>
-      <h1>{titulo}</h1>
+      <h1 style={{fontFamily:"sans-serif"}}>{titulo}</h1>
       <div ref={FormTrabajos} className="agregar-trabajo">
         <label htmlFor="imagen">Añade una imagen:</label>
         <input

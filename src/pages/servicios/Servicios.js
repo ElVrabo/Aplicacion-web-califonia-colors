@@ -4,13 +4,15 @@ import { Carrusel } from "../../components/carrusel/carrusel";
 import firstImageCarrusel from "../../assets/motor.jpg";
 import secondImageCarrusel from "../../assets/kilometraje.jpg";
 import thirdImageCarrusel from "../../assets/carroPexels.jpg";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect} from "react";
 import { ServiciosContext } from "../../context/ServiciosContext";
 import serviciosMecanica from "../../utils/serviciosMecanica";
-import { Link } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 export const Servicios = () => {
   const { servicios, setServicios } = useContext(ServiciosContext);
+  const navigate = useNavigate()
 
   useEffect(() => {
     setServicios(serviciosMecanica);
@@ -36,9 +38,9 @@ export const Servicios = () => {
           <div className="body-card-services" key={servicio.id}>
             <img src={servicio.image} alt="imagen" />
             <h2>{servicio.nombre}</h2>
-            <Link className="link-detalles" to={`/servicios/${servicio.id}`}>
-              Ver detalles
-            </Link>
+            <Button variant="primary" onClick={()=>{
+              navigate(`/servicios/${servicio.id}`)
+            }}>Detalles</Button>
           </div>
         ))}
       </div>
