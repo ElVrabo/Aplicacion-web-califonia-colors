@@ -5,19 +5,19 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { useContext } from "react";
 import { ResenasContext } from "../../context/ReseñasContext";
-
+import rudeWords from "../../utils/rudeWords";
 
 export const Reseñas = () => {
-
   const [viewModalExit, setViewModalExit] = useState(false);
   const [viewModalError, setViewModalError] = useState(false);
   const inputComentario = useRef();
-  const{comentario,setComentario,listComentarios,setListComentarios} = useContext(ResenasContext)
+  const { comentario, setComentario, listComentarios, setListComentarios } =
+    useContext(ResenasContext);
 
   /*se recorre el arreglo*/
-  const comentariosRender = listComentarios.map((comentario,index) => {
+  const comentariosRender = listComentarios.map((comentario, index) => {
     return (
-      <div key={index}  className="cards-comentarios">
+      <div key={index} className="cards-comentarios">
         <div className="card">{comentario}</div>
       </div>
     );
@@ -46,7 +46,7 @@ export const Reseñas = () => {
           </Modal.Header>
           <Modal.Body>
             Ocurrio un error, verifica que hayas llenado todos los campos
-            porfavor!
+            porfavor o que tu contenido no sea ofensivo!
           </Modal.Body>
           <Modal.Footer>
             <Button variant="primary" onClick={() => setViewModalError(false)}>
@@ -73,16 +73,26 @@ export const Reseñas = () => {
           <button
             className="btn-insert-comment"
             onClick={() => {
-              /*El arreglo destructurado [...comentarios,comentario] es una forma de agregar un elemento nuevo al final del arreglo comentarios. Esto se logra creando un nuevo arreglo que contenga los elementos del original, para esto se usa el [...comentarios] seguidos del nuevo elemento (comentario)*/
-              if (inputComentario.current.value) {
-                
-                /*se crea un nuevo arreglo con los elementos del anterior y se le agrega un nuevo valor (comentario)*/
-                setListComentarios([...listComentarios, comentario]);
-                
-                setViewModalExit(true);
+              if (
+                inputComentario.current.value ==
+                  rudeWords.getWord1.toLocaleLowerCase() ||
+                inputComentario.current.value ==
+                  rudeWords.getWord2.toLocaleLowerCase() ||
+                inputComentario.current.value ==
+                  rudeWords.getWord3.toLocaleLowerCase() ||
+                inputComentario.current.value ==
+                  rudeWords.getWord4.toLocaleLowerCase() ||
+                inputComentario.current.value ==
+                  rudeWords.getWord5.toLocaleLowerCase() ||
+                inputComentario.current.value ==
+                  rudeWords.getWord6.toLocaleLowerCase()
+              ) {
+                setViewModalError(true);
                 inputComentario.current.value = "";
               } else {
-                setViewModalError(true);
+                /*se crea un nuevo arreglo con los elementos del anterior y se le agrega un nuevo valor (comentario)*/
+                setListComentarios([...listComentarios, comentario]);
+                setViewModalExit(true);
               }
             }}
           >

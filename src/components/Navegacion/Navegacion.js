@@ -1,5 +1,5 @@
 import "./navegacion.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   CATALOGOSERVICIOS,
   CONTACTO,
@@ -9,15 +9,18 @@ import {
   ListPromociones,
   ListTrabajos,
 } from "../../config/router/paths";
-import { Button } from "@mui/material";
+// import iconMenu from "../../assets/icons/iconMenu.png"
 
-import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
+
+
 export const Navegacion = () => {
-  const navigete = useNavigate();
+  
 
   return (
     <>
       <nav className="container-nav">
+        {/* <input type="checkbox"/>
+        <label htmlFor="check" className="bar-btn"></label> */}
         <Link className="nav-links" to={HOME}>
           Inicio
         </Link>
