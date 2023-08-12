@@ -11,6 +11,7 @@ import {
   ListTrabajos,
   ListComentarios,
   SERVICIOID,
+  PageAdminViewPost,
 } from "./paths";
 import { Home } from "../../pages/Home/Home";
 import { Promociones } from "../../pages/promociones/promociones";
@@ -24,6 +25,7 @@ import { TrabajosContextProvider } from "../../context/TrabajosContext";
 import { ServiciosContextProvider } from "../../context/ServiciosContext";
 import ServiciosDetail from "../../pages/serviciosDetails/ServiciosDetails";
 import { ResenasContextProvider } from "../../context/ReseñasContext";
+import PostAdminPages from "../../pages/adminPages/AdminPages";
 
 export const AppRouter = () => {
   return (
@@ -32,22 +34,23 @@ export const AppRouter = () => {
       <PromocionesContextProvider>
         <TrabajosContextProvider>
           <ResenasContextProvider>
-          <ServiciosContextProvider>
-            <Routes>
-              <Route path={HOME} element={<Home />} />
-              <Route path={ListPromociones} element={<Promociones />} />
-              <Route path={CATALOGOSERVICIOS} element={<Servicios />} />
-              <Route path={SERVICIOID} element={<ServiciosDetail />} />
-              <Route path={ListTrabajos} element={<Trabajos />} />
-              <Route path={ListComentarios} element={<Reseñas />} />
-              <Route path={CONTACTO} element={<Contacto />} />
+            <ServiciosContextProvider>
+              <Routes>
+                <Route path={HOME} element={<Home />} />
+                <Route path={ListPromociones} element={<Promociones />} />
+                <Route path={CATALOGOSERVICIOS} element={<Servicios />} />
+                <Route path={SERVICIOID} element={<ServiciosDetail />} />
+                <Route path={ListTrabajos} element={<Trabajos />} />
+                <Route path={ListComentarios} element={<Reseñas />} />
+                <Route path={CONTACTO} element={<Contacto />} />
 
-              <Route path={LOGIN} element={<Login />} />
+                <Route path={LOGIN} element={<Login />} />
 
-              <Route path={PageAdmin} element={<ViewAdmin />} />
-            </Routes>
-          </ServiciosContextProvider>
-            </ResenasContextProvider>
+                <Route path={PageAdmin} element={<ViewAdmin />} />
+                <Route path={PageAdminViewPost} element={<PostAdminPages />} />
+              </Routes>
+            </ServiciosContextProvider>
+          </ResenasContextProvider>
         </TrabajosContextProvider>
       </PromocionesContextProvider>
     </UserContextProvider>

@@ -11,18 +11,18 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
 export const Servicios = () => {
-  const { servicios, setServicios } = useContext(ServiciosContext);
+  const { listServicios, setListServicios } = useContext(ServiciosContext);
   const navigate = useNavigate();
 
   useEffect(() => {
-    setServicios(serviciosMecanica);
+    setListServicios(serviciosMecanica);
   }, []);
 
   const searchService = (e) => {
     const filterProduct = serviciosMecanica.filter((servicio) => {
-      return servicio.nombre.startsWith(e.target.value);
+      return servicio.nombre == e.target.value;
     });
-    setServicios(filterProduct);
+    setListServicios(filterProduct);
   };
 
   return (
@@ -42,15 +42,20 @@ export const Servicios = () => {
       </div>
       <div className="container-input-search-service">
         <div className="input-search">
-          <input
-            type="text"
-            placeholder="Busca un servicio"
-            onChange={searchService}
-          />
+          <label style={{ color: "black" }}>Busca un servicio</label>
+          <select onChange={searchService}>
+            <option value="" disabled>
+              Elige una opcion
+            </option>
+            <option value="Mecanica">Mecanica</option>
+            <option value="Pintura">Pintura</option>
+            <option value="Electrico">Electrico</option>
+            <option value="Tapiceria">Tapiceria</option>
+          </select>
         </div>
       </div>
       <div id="servicios" className="container-card-services">
-        {servicios.map((servicio) => (
+        {listServicios.map((servicio) => (
           <div className="body-card-services" key={servicio.id}>
             <img src={servicio.image} alt="imagen" />
             <h2>{servicio.nombre}</h2>

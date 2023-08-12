@@ -1,7 +1,4 @@
-/*Estilos de las cards de vacantes de trabajo*/
-.card-text {
-  text-align: center;
-}
+
 /*estilo del contenedor de carrusel de imagenes*/
 .container-carrusel {
   margin-top: 10px;
@@ -13,4 +10,11 @@
   display: flex;
   justify-content: center;
   color: red;
+}
+.container-cards-trabajos{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 40px;
 }

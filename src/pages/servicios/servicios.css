@@ -6,15 +6,30 @@
 }
 .input-search{
   display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 10px;
 }
-.input-search input{
-  width: 300px;
-  border: 1px solid black;
-  border-radius: 5px;
+
+.input-search select{
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 16px;
+  width: 200px;
+  cursor: pointer;
 }
-.input-search input:hover{
-  border: 3px solid blue
+.input-search::after{
+  content: '\25BC'; /* Código unicode para el triángulo hacia abajo */
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  pointer-events: none; 
+}
+.input-search option{
+  background-color: white;
 }
 .container-card-services {
   margin-top: 10px;

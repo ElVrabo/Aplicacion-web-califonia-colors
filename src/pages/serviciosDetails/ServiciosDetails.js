@@ -7,11 +7,11 @@ import puntuacionServicio from "./puntuacionServicio";
 import { CATALOGOSERVICIOS } from "../../config/router/paths";
 
 const ServiciosDetail = () => {
-  const { servicios } = useContext(ServiciosContext);
+  const { listServicios } = useContext(ServiciosContext);
   let { servicioID } = useParams();
-  const navigete = useNavigate()
+  const navigete = useNavigate();
 
-  let servicioSeleccionado = servicios.find(
+  let servicioSeleccionado = listServicios.find(
     (servicio) => servicio.id == servicioID
   );
   function openWhatsApp(servicio) {
