@@ -23,9 +23,9 @@ export const createPromotion = async (req, res) => {
     });
     /*Si hay un archivo en la peticion*/
     if (req.file) {
-      /*En el objeto newPromotion se le agregara una propiedad avatar que sera igual al path
+      /*En el objeto newPromotion se le agregara una propiedad avatar que sera igual al nombre
       de ese archivo*/
-      newPromotion.avatar = req.file.path;
+      newPromotion.avatar = req.file.filename;
     }
     /*El metodo save de moongose es para guardar ese documento creado en la bd*/
     const savePromotion = await newPromotion.save();

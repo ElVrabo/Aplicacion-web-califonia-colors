@@ -14,7 +14,7 @@ router.get("/promotions", getPromotions);
 router.post(
   "/promotions",
   upload.single("avatar"),
-  // validatorSchema(createPromotionsSchema),
+  validatorSchema(createPromotionsSchema),
 
   createPromotion
 );

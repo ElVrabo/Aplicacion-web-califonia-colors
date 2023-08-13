@@ -3,7 +3,6 @@ import morgan from "morgan";
 import cors from "cors";
 import promotionsRoutes from "./routes/promotions.routes.js";
 import trabajosRoutes from "./routes/trabajos.routes.js";
-import path from "path";
 const app = express();
 
 /*el servidor solo aceptara peticiones del puerto 3000*/
@@ -13,6 +12,10 @@ app.use(
     credentials: true,
   })
 );
+/*esta línea de código habilita la entrega de archivos estáticos desde el directorio "uploads"
+ de tu aplicación Express, lo que es útil para mostrar imágenes, documentos u otros recursos
+  estáticos en tu sitio web.*/
+app.use(express.static("uploads"));
 
 app.use(morgan("dev"));
 app.use(express.json());

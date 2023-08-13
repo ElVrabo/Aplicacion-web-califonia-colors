@@ -17,7 +17,7 @@ export const ListPromociones = ({ promotion, showClick, textButton }) => {
       >
         <Card.Img
           variant="top"
-          src={`http://localhost:4000/uploads/${promotion.avatar}`}
+          src={`http://localhost:4000/${promotion.avatar}`}
           style={{ height: "200px" }}
         />
 

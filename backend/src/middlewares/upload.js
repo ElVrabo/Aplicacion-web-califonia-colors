@@ -9,8 +9,9 @@ let storage = multer.diskStorage({
   },
   filename: function (req, file, cb) {
     let ext = path.extname(file.originalname);
-    /*Aqui se renombrara el archivo con la fecha actual y su extension(png,etc)*/
-    cb(null, Date.now() + ext);
+    /*Aqui se renombrara el nombre del campo + _ + la fecha actual y el nobre original 
+    del archivo que basicamente es su extension jpg,png,etc*/
+    cb(null, file.fieldname + "_" + Date.now() + ext);
   },
 });
 
