@@ -1,6 +1,10 @@
 import "./navbarAdmin.css";
 import { Link } from "react-router-dom";
-import { PageAdmin, PageAdminViewPost } from "../../config/router/paths";
+import {
+  PageAdmin,
+  PageAdminViewPost,
+  viewTrabajosAdmin,
+} from "../../config/router/paths";
 
 const NavbarAdmin = () => {
   return (
@@ -13,7 +17,13 @@ const NavbarAdmin = () => {
         className="nav-link"
         to={PageAdminViewPost}
       >
-        Ver mis publicaciones
+        Ver mis promociones
+      </Link>
+      <Link
+        style={{ color: "white", textDecoration: "none" }}
+        to={viewTrabajosAdmin}
+      >
+        Ver mis vacantes
       </Link>
     </nav>
   );

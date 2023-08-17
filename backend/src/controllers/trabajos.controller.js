@@ -17,6 +17,9 @@ export const createTrabajo = async (req, res) => {
       description,
       date,
     });
+    if (req.file) {
+      newTrabajo.avatar = req.file.filename;
+    }
     const saveTrabajo = await newTrabajo.save();
     res.json(saveTrabajo);
   } catch (error) {
@@ -31,6 +34,6 @@ export const deleteTrabajo = async (req, res) => {
       return res.status(404).json({ message: "No se encontro la tarea" });
     return res.status(204);
   } catch (error) {
-    res.status(404).json({ error: error.message });
+    res.status(404).json({ message: error.message });
   }
 };

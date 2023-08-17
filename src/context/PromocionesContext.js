@@ -3,7 +3,6 @@ import {
   createPromotionRequest,
   deletePromotionRequest,
   getPromotionsRequest,
-  searchPromotionRequest,
 } from "../api/promotions";
 
 export const PromocionesContext = createContext();
@@ -22,7 +21,6 @@ export const PromocionesContextProvider = ({ children }) => {
   const createPromotions = async (data) => {
     try {
       const res = await createPromotionRequest(data);
-      console.log(res.data);
     } catch (error) {
       console.log(error.response.data);
       /*error es el objeto general de axios, response es la respuesta y data son los errores como tal*/
@@ -35,9 +33,7 @@ export const PromocionesContextProvider = ({ children }) => {
       const res = await deletePromotionRequest(id);
       if (res.status === 204)
         setPromotions(promotions.filter((promotion) => promotion.id !== id));
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   return (

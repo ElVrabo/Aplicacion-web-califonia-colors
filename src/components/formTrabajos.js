@@ -7,10 +7,15 @@ export const FormTrabajos = ({ titulo }) => {
   const { register, handleSubmit, setValue } = useForm();
   const { createTrabajo, errors } = useContext(TrabajosContext);
 
-  const insertTrabajo = handleSubmit((value) => {
-    createTrabajo(value);
+  const insertTrabajo = handleSubmit((formData) => {
+    const form = new FormData();
+    form.append("title", formData.title);
+    form.append("description", formData.description);
+    form.append("avatar", formData.avatar[0]);
+    createTrabajo(form);
     setValue("title", "");
     setValue("description", "");
+    setValue("avatar", "");
   });
 
   return (
@@ -21,7 +26,16 @@ export const FormTrabajos = ({ titulo }) => {
           <div style={{ color: "white" }}>{error}</div>
         ))}
       </div>
-      <form onSubmit={insertTrabajo} className="agregar-trabajo">
+      <form
+        onSubmit={insertTrabajo}
+        className="agregar-trabajo"
+        style={{ marginTop: "15px" }}
+      >
+        <input
+          type="file"
+          accept="image/png, image/jpeg, image/jpg "
+          {...register("avatar", { required: true })}
+        />
         <label style={{ color: "black" }} htmlFor="trabajo">
           Trabajo:
         </label>

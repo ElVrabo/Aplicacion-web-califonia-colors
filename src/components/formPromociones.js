@@ -25,6 +25,7 @@ export const FormPromociones = () => {
     setValue("title", "");
     setValue("description", "");
     setValue("price", "");
+    setValue("avatar", "");
   });
 
   return (
@@ -40,6 +41,7 @@ export const FormPromociones = () => {
           onSubmit={insertPromotion}
           className="agregar-promocion"
           encType="multipart/form-data"
+          style={{ marginTop: "10px" }}
         >
           <input
             type="file"

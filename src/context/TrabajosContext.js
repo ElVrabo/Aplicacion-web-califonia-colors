@@ -1,5 +1,9 @@
 import { createContext, useState } from "react";
-import { createTrabajoRequest, getTrabajosRequest } from "../api/trabajos";
+import {
+  createTrabajoRequest,
+  deleteTrabajoRequest,
+  getTrabajosRequest,
+} from "../api/trabajos";
 
 export const TrabajosContext = createContext();
 
@@ -17,10 +21,18 @@ export const TrabajosContextProvider = ({ children }) => {
   const createTrabajo = async (newTrabajo) => {
     try {
       const res = await createTrabajoRequest(newTrabajo);
-      console.log(res.data);
     } catch (error) {
-      console.log(error.response.data);
       setErrors(error.response.data);
+    }
+  };
+
+  const deleteTrabajo = async (id) => {
+    try {
+      const res = await deleteTrabajoRequest(id);
+      if (res.status === 204)
+        setTrabajos(trabajos.filter((trabajo) => trabajo._id !== id));
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -31,6 +43,7 @@ export const TrabajosContextProvider = ({ children }) => {
         errors,
         getTrabajos,
         createTrabajo,
+        deleteTrabajo,
       }}
     >
       {children}

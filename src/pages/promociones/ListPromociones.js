@@ -67,8 +67,7 @@ export const ListPromociones = ({ promotion, showClick, textButton }) => {
               fontWeight: "inherit",
             }}
           >
-            Se publico el:
-            {new Date(promotion.date).toLocaleDateString()}
+            Se publico el: {new Date(promotion.date).toLocaleDateString()}
           </Card.Text>
         </Card.Body>
         <div>

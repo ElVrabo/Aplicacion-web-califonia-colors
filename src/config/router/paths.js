@@ -7,4 +7,5 @@ export const ListTrabajos = "/trabajos";
 export const ListComentarios = "/comentarios";
 export const CONTACTO = "/contacto";
 export const PageAdmin = "/administrador";
-export const PageAdminViewPost = "/publicaciones";
+export const PageAdminViewPost = "/misPromociones";
+export const viewTrabajosAdmin = "/misTrabajos";

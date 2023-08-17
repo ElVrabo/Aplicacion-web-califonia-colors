@@ -1,7 +1,6 @@
 import "./listTrabajos.css";
 import { Button } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
-import imageOferta from "../../assets/imageOferta.jpg";
 
 export const ListTrabajos = ({ trabajo, showClick, textButton }) => {
   return (
@@ -15,7 +14,11 @@ export const ListTrabajos = ({ trabajo, showClick, textButton }) => {
           justifyContent: "center",
         }}
       >
-        <Card.Img variant="top" src={imageOferta} style={{ height: "200px" }} />
+        <Card.Img
+          variant="top"
+          src={`http://localhost:4000/${trabajo.avatar}`}
+          style={{ height: "200px" }}
+        />
 
         <Card.Body
           style={{
