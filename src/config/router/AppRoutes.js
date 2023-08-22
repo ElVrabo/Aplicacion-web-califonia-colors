@@ -13,6 +13,7 @@ import {
   SERVICIOID,
   PageAdminViewPost,
   viewTrabajosAdmin,
+  comentariosAdminPages,
 } from "./paths";
 import { Home } from "../../pages/Home/Home";
 import { Promociones } from "../../pages/promociones/promociones";
@@ -28,6 +29,7 @@ import ServiciosDetail from "../../pages/serviciosDetails/ServiciosDetails";
 import { ResenasContextProvider } from "../../context/ReseñasContext";
 import PromocionesAdminPages from "../../pages/adminPages/PromocionesAdminPages";
 import TrabajosAdminPages from "../../pages/adminPages/TrabajosAdminPages";
+import ComentariosAdminPages from "../../pages/adminPages/ComentariosAdminPages";
 
 export const AppRouter = () => {
   return (
@@ -56,6 +58,10 @@ export const AppRouter = () => {
                 <Route
                   path={viewTrabajosAdmin}
                   element={<TrabajosAdminPages />}
+                />
+                <Route
+                  path={comentariosAdminPages}
+                  element={<ComentariosAdminPages />}
                 />
               </Routes>
             </ServiciosContextProvider>

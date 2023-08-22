@@ -3,12 +3,16 @@ import morgan from "morgan";
 import cors from "cors";
 import promotionsRoutes from "./routes/promotions.routes.js";
 import trabajosRoutes from "./routes/trabajos.routes.js";
+import commentsRoutes from "./routes/comentarios.routes.js";
 const app = express();
 
-/*el servidor solo aceptara peticiones del puerto 3000*/
+/*el servidor solo aceptara peticiones de la siguiente url y solo peticiones con los
+metodos GET,POST,DELETE*/
 app.use(
   cors({
+    // origin: "https://california-colors.netlify.app"
     origin: "http://localhost:3000",
+    methods: ["GET", "POST", "DELETE"],
     credentials: true,
   })
 );
@@ -21,5 +25,6 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use("/api", promotionsRoutes);
 app.use("/api", trabajosRoutes);
+app.use("/api", commentsRoutes);
 
 export default app;

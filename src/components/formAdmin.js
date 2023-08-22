@@ -9,6 +9,7 @@ import Button from "react-bootstrap/Button";
 
 export function FormAdmin() {
   const [modalLoginError, setModalLoginError] = useState(false);
+
   /*Este componente puede hacer uso de las variables de estado que se definieron dentro del contexto UserContext*/
   const { userData, setUserData } = useContext(UserContext);
 
@@ -40,7 +41,7 @@ export function FormAdmin() {
           <Modal.Header closeButton>
             <Modal.Title style={{ color: "red" }}>Error!</Modal.Title>
           </Modal.Header>
-          <Modal.Body>Verifica todos tus campos!</Modal.Body>
+          <Modal.Body>Verifica que los datos sean correctos!</Modal.Body>
           <Modal.Footer>
             <Button variant="primary" onClick={() => setModalLoginError(false)}>
               Cerrar
@@ -69,16 +70,14 @@ export function FormAdmin() {
                 </div>
 
                 <button onClick={login}>Iniciar sesion</button>
-                <div className="register">
-                  <p></p>
-                </div>
+                <div className="register"></div>
               </form>
               <button
                 onClick={() => {
                   navigate(HOME);
                 }}
               >
-                inicio
+                Regresar
               </button>
             </div>
           </div>

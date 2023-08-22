@@ -20,17 +20,15 @@ export const FormTrabajos = ({ titulo }) => {
 
   return (
     <div className="container-trabajos">
-      <h1 style={{ fontFamily: "sans-serif" }}>{titulo}</h1>
+      <h2 style={{ fontFamily: "sans-serif", color: "black" }}>
+        Agregar vacante
+      </h2>
       <div style={{ backgroundColor: "red", borderRadius: "10px" }}>
         {errors.map((error) => (
           <div style={{ color: "white" }}>{error}</div>
         ))}
       </div>
-      <form
-        onSubmit={insertTrabajo}
-        className="agregar-trabajo"
-        style={{ marginTop: "15px" }}
-      >
+      <form onSubmit={insertTrabajo} className="agregar-trabajo">
         <input
           type="file"
           accept="image/png, image/jpeg, image/jpg "
@@ -52,11 +50,14 @@ export const FormTrabajos = ({ titulo }) => {
           id="descripcion"
           rows="10"
           {...register("description", { required: true })}
-          className="border-b-2 border-blue-500 border-t-0 border-r-0 border-l-0 focus:outline-none"
+          className="input-descripcion-trabajo"
         ></textarea>
-        <Button variant="primary" type="onSubmit">
-          Insertar vacante
-        </Button>
+
+        <div style={{ marginTop: "auto" }}>
+          <Button variant="primary" type="onSubmit">
+            Insertar vacante
+          </Button>
+        </div>
       </form>
     </div>
   );

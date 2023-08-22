@@ -1,23 +1,33 @@
 h1 {
   color: blue;
   text-align: center;
-  margin-top: 10px;
+  /* margin-top: 10px; */
 }
-.form-agregar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-}
+
 .agregar-promocion {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 5px;
+  border-radius: 10px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s;
+  width: 450px;
+  height: 500px;
 }
 
 input {
   width: 100%;
+  height: auto;
+  border: none;
+  border-bottom: 2px solid rgb(57, 57, 178);
+}
+
+.input-price-promotion{
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid blue;
 }
 
 label {
@@ -25,14 +35,11 @@ label {
 }
 
 @media (max-width: 576px) {
-  .form-agregar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
-    width: 100%;
+  .agregar-promocion{
+  width: auto;
   }
   input {
     width: 100%;
+    
   }
 }

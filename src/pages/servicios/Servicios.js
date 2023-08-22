@@ -4,7 +4,7 @@ import { Carrusel } from "../../components/carrusel/carrusel";
 import firstImageCarrusel from "../../assets/motor.jpg";
 import secondImageCarrusel from "../../assets/kilometraje.jpg";
 import thirdImageCarrusel from "../../assets/carroPexels.jpg";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { ServiciosContext } from "../../context/ServiciosContext";
 import serviciosMecanica from "../../utils/serviciosMecanica";
 import { useNavigate } from "react-router-dom";
@@ -15,13 +15,18 @@ export const Servicios = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    /*Cuando se renderize por primera ves el componente la variable listServicios
+    sera igual al array de servicios de mecanica*/
     setListServicios(serviciosMecanica);
   }, []);
 
+  /*Funcion para que cuando el usuario busque un servicio en especifico, este mismo se renderize
+  para eso funciona el metodo filter de arrays*/
   const searchService = (e) => {
     const filterProduct = serviciosMecanica.filter((servicio) => {
       return servicio.nombre == e.target.value;
     });
+    /*Se actualiza la variable listServicios con los servicios filtrados dada una condicion*/
     setListServicios(filterProduct);
   };
 

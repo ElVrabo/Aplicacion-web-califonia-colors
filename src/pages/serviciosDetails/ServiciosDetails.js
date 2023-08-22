@@ -1,17 +1,15 @@
 import "./serviciosDetails.css";
 import Button from "react-bootstrap/Button";
-import { useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { ServiciosContext } from "../../context/ServiciosContext";
 import puntuacionServicio from "./puntuacionServicio";
 import { CATALOGOSERVICIOS } from "../../config/router/paths";
+import serviciosMecanica from "../../utils/serviciosMecanica";
 
 const ServiciosDetail = () => {
-  const { listServicios } = useContext(ServiciosContext);
   let { servicioID } = useParams();
   const navigete = useNavigate();
 
-  let servicioSeleccionado = listServicios.find(
+  let servicioSeleccionado = serviciosMecanica.find(
     (servicio) => servicio.id == servicioID
   );
   function openWhatsApp(servicio) {
@@ -25,9 +23,11 @@ const ServiciosDetail = () => {
     <>
       <div className="container-card-details">
         <div className="body-card-details">
-          <div className="image-service-details">
-            <img src={servicioSeleccionado.image} alt="" />
-          </div>
+          <img
+            className="image-service"
+            src={servicioSeleccionado.image}
+            alt=""
+          />
           <div className="text-service-details">
             <p style={{ color: "black" }}>
               {servicioSeleccionado.recomendado
@@ -59,25 +59,26 @@ const ServiciosDetail = () => {
                 alt=""
               />
             </div>
-
-            <div className="lista-servicios">
-              {servicioSeleccionado.servicios.map((servicio) => (
-                <ol key={servicio}>
-                  <li style={{ color: "black" }}>{`✅${servicio}`}</li>
-                </ol>
-              ))}
-            </div>
+            {servicioSeleccionado.servicios.map((servicio) => (
+              <ol key={servicio}>
+                <li style={{ color: "black" }}>{`✅${servicio}`}</li>
+              </ol>
+            ))}
             <div className="btns-details">
-            <Button
-              onClick={() => openWhatsApp(servicioSeleccionado.nombre)}
-              variant="primary"
-              
-            >
-              Me interesa
-            </Button>
-            <Button variant="primary" onClick={()=>{
-              navigete(CATALOGOSERVICIOS)
-            }}>Regresar</Button>
+              <Button
+                onClick={() => openWhatsApp(servicioSeleccionado.nombre)}
+                variant="primary"
+              >
+                Me interesa
+              </Button>
+              <Button
+                variant="primary"
+                onClick={() => {
+                  navigete(CATALOGOSERVICIOS);
+                }}
+              >
+                Regresar
+              </Button>
             </div>
           </div>
         </div>

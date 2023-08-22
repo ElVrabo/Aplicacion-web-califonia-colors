@@ -1,7 +1,7 @@
 .container-card-details {
   margin-top: 30px;
   padding: 20px;
-  height: 100vh;
+  /* height: 100vh; */
 }
 .body-card-details {
   display: flex;
@@ -12,20 +12,15 @@
   gap: 20px;
   align-items: center;
   height: 700px;
-  padding: 25px;
+  width: 100%;
+  padding: 15px;
+  height: auto;
 }
-.image-service-details {
-  display: flex;
-  align-items: center;
-}
-.image-service-details img {
-  height: 300px;
+.image-service{
   width: 500px;
-  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
-  -webkit-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
-  border-radius: 10px;
+  
 }
+
 .text-service-details {
   display: flex;
   flex-direction: column;
@@ -47,11 +42,38 @@
 .btns-details Button{
   width: 200px;
 }
-@media (min-width: 320px) and (max-width: 767px) {
+/*Estilos responsivos para adaptarse a dispositivos mas pequeños*/
+@media (max-width: 767px) {
+  .container-card-details{
+    display: flex;
+    /* flex-direction: column; */
+    align-items: start;
+    width: 100%;
+    height: auto;
+  }
   .body-card-details {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: auto;
+    align-items: start;
+    width: 100%;
+    height: auto
+    
   }
+  .image-service{
+    width: 100%;
+  }
+  .lista-servicios{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+  .btns-details{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    
+  }
+
+  
 }

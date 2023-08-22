@@ -9,3 +9,4 @@ export const CONTACTO = "/contacto";
 export const PageAdmin = "/administrador";
 export const PageAdminViewPost = "/misPromociones";
 export const viewTrabajosAdmin = "/misTrabajos";
+export const comentariosAdminPages = "/misComentarios";

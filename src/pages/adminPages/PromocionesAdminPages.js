@@ -30,6 +30,7 @@ const PromocionesAdminPages = () => {
             promotion={promotion}
             showClick={() => {
               deletePromotion(promotion._id);
+              getPromotions();
             }}
             textButton="Eliminar"
             key={promotion._id}

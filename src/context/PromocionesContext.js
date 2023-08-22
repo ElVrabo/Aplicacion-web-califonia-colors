@@ -22,7 +22,6 @@ export const PromocionesContextProvider = ({ children }) => {
     try {
       const res = await createPromotionRequest(data);
     } catch (error) {
-      console.log(error.response.data);
       /*error es el objeto general de axios, response es la respuesta y data son los errores como tal*/
       setErrors(error.response.data);
     }

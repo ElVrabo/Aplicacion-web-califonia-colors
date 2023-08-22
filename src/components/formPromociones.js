@@ -31,7 +31,9 @@ export const FormPromociones = () => {
   return (
     <>
       <div className="form-agregar">
-        <h1 style={{ fontFamily: "sans-serif" }}>¡Agrega una promocion!</h1>
+        <h2 style={{ fontFamily: "sans-serif", color: "black" }}>
+          Agregar promocion
+        </h2>
         <div style={{ backgroundColor: "red", borderRadius: "10px" }}>
           {errors.map((error) => (
             <div style={{ color: "white" }}>{error}</div>
@@ -41,7 +43,6 @@ export const FormPromociones = () => {
           onSubmit={insertPromotion}
           className="agregar-promocion"
           encType="multipart/form-data"
-          style={{ marginTop: "10px" }}
         >
           <input
             type="file"
@@ -63,7 +64,7 @@ export const FormPromociones = () => {
           </label>
           <textarea
             rows="10"
-            className="border-b-2 border-blue-500 border-t-0 border-r-0 border-l-0 focus:outline-none"
+            className="input-price-promotion"
             {...register("description", { required: true })}
           ></textarea>
           <label style={{ color: "black" }} htmlFor="input3">
@@ -75,9 +76,11 @@ export const FormPromociones = () => {
             type="text"
             className="border-b-2 border-blue-500 border-t-0 border-r-0 border-l-0 focus:outline-none"
           />
-          <Button type="submit" variant="primary">
-            Insertar promocion
-          </Button>
+          <div style={{ marginTop: "30px" }}>
+            <Button type="submit" variant="primary">
+              Insertar promocion
+            </Button>
+          </div>
 
           {/* <Modal open={openModal} onClose={() => setOpenModal(false)}>
           <h2>Exito</h2>
