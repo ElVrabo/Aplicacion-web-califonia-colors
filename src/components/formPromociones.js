@@ -64,7 +64,7 @@ export const FormPromociones = () => {
           </label>
           <textarea
             rows="10"
-            className="input-price-promotion"
+            className="input-description-promotion"
             {...register("description", { required: true })}
           ></textarea>
           <label style={{ color: "black" }} htmlFor="input3">

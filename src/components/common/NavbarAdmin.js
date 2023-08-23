@@ -2,7 +2,6 @@ import "./navbarAdmin.css";
 import { Link } from "react-router-dom";
 import {
   HOME,
-  PageAdmin,
   PageAdminViewPost,
   comentariosAdminPages,
   viewTrabajosAdmin,
@@ -14,9 +13,7 @@ const NavbarAdmin = () => {
   const { userData } = useContext(UserContext);
   return (
     <nav className="container-nav-admin">
-      <Link style={{ color: "white", textDecoration: "none" }} to={PageAdmin}>
-        Insertar publicaciones
-      </Link>
+      <h7 style={{ color: "white" }}>Bienvenido {userData.nombre}</h7>
       <Link
         style={{ color: "white", textDecoration: "none" }}
         className="nav-link"
@@ -36,7 +33,7 @@ const NavbarAdmin = () => {
       >
         Comentarios de usuarios
       </Link>
-      <h7 style={{ color: "white" }}>Bienvenido {userData.nombre}</h7>
+
       <Link style={{ color: "white", textDecoration: "none" }} to={HOME}>
         Cerrar sesion
       </Link>

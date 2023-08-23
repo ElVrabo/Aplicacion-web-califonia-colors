@@ -28,7 +28,6 @@ export const Reseñas = () => {
     return (
       <>
         <Navegacion />
-        <h1>No hay comentarios</h1>
         <div className="container-comentarios" id="comentarios">
           <form onSubmit={insertComment} className="formulario-comentarios">
             <input
@@ -56,8 +55,8 @@ export const Reseñas = () => {
             <div
               key={comment._id}
               style={{
-                border: "1px solid black",
-                borderRadius: "10px",
+                border: "2px solid black",
+                borderRadius: "5px",
                 height: "auto",
                 width: "auto",
               }}

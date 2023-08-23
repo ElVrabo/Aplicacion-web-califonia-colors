@@ -13,7 +13,8 @@ const TrabajosAdminPages = () => {
   if (trabajos.length == 0) {
     return (
       <>
-        <NavbarAdmin />;<h1>No hay trabajos</h1>;
+        <NavbarAdmin />
+        <h1 style={{ marginTop: "25px" }}>No hay trabajos</h1>
       </>
     );
   }
