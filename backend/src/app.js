@@ -10,8 +10,8 @@ const app = express();
 metodos GET,POST,DELETE*/
 app.use(
   cors({
-    // origin: "https://california-colors.netlify.app"
     origin: "http://localhost:3000",
+    // origin: "https://california-colors.netlify.app",
     methods: ["GET", "POST", "DELETE"],
     credentials: true,
   })

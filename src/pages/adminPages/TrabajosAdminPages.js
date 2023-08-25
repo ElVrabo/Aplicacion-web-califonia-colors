@@ -14,7 +14,7 @@ const TrabajosAdminPages = () => {
     return (
       <>
         <NavbarAdmin />
-        <h1 style={{ marginTop: "25px" }}>No hay trabajos</h1>
+        <h1 style={{ marginTop: "25px" }}>No hay vacantes</h1>
       </>
     );
   }
@@ -28,7 +28,7 @@ const TrabajosAdminPages = () => {
           display: "flex",
           marginTop: "30px",
           justifyContent: "center",
-          flexWrap: "wrap-reverse",
+          flexWrap: "wrap",
           gap: "20px",
         }}
       >

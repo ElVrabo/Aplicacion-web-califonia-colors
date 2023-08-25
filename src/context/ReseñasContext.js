@@ -9,6 +9,7 @@ export const ResenasContext = createContext();
 
 export const ResenasContextProvider = ({ children }) => {
   const [listComments, setListComments] = useState([]);
+  const [errors, setErrors] = useState([]);
   const getComments = async () => {
     try {
       const res = await getCommentsRequest();
@@ -19,9 +20,8 @@ export const ResenasContextProvider = ({ children }) => {
   const createComments = async (value) => {
     try {
       const res = await createCommentsRequest(value);
-      console.log(res.data);
     } catch (error) {
-      console.log("error", error);
+      setErrors(error.response.data);
     }
   };
 
@@ -41,6 +41,7 @@ export const ResenasContextProvider = ({ children }) => {
         createComments,
         deleteComments,
         listComments,
+        errors,
       }}
     >
       {children}

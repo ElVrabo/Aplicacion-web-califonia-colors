@@ -57,6 +57,7 @@ export const Contacto = () => {
           </div>
           <div className="container-mapa">
             <iframe
+              style={{ width: "auto" }}
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3291.576381809349!2d-98.11603358985997!3d19.464119881746296!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d01f40caf1043b%3A0x7129f0cd1a5adb6b!2sCALIFORNIA%20COLORS%20Hojalateria%20y%20Pintura!5e1!3m2!1ses!2smx!4v1687905932991!5m2!1ses!2smx"
               allowfullscreen=""
               loading="lazy"

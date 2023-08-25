@@ -77,7 +77,9 @@ export const Promociones = () => {
           textoRedireccion="Ver promociones"
         />
       </div>
-
+      <h1 style={{ color: "black", marginTop: "40px" }}>
+        Promociones actuales
+      </h1>
       <div
         style={{
           display: "flex",

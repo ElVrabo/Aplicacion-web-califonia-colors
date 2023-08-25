@@ -1,9 +1,11 @@
 import { useForm } from "react-hook-form";
 import "../styles/agregarTrabajos.css";
-import Button from "react-bootstrap/Button";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { TrabajosContext } from "../context/TrabajosContext";
-export const FormTrabajos = ({ titulo }) => {
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+export const FormTrabajos = () => {
+  const [addTrabajoExit, setAddTrabajoExit] = useState(false);
   const { register, handleSubmit, setValue } = useForm();
   const { createTrabajo, errors } = useContext(TrabajosContext);
 
@@ -16,6 +18,7 @@ export const FormTrabajos = ({ titulo }) => {
     setValue("title", "");
     setValue("description", "");
     setValue("avatar", "");
+    setAddTrabajoExit(true);
   });
 
   return (
@@ -23,16 +26,16 @@ export const FormTrabajos = ({ titulo }) => {
       <h2 style={{ fontFamily: "sans-serif", color: "black" }}>
         Agregar vacante
       </h2>
-      <div style={{ backgroundColor: "red", borderRadius: "10px" }}>
+      <div style={{ backgroundColor: "red", borderRadius: "5px" }}>
         {errors.map((error) => (
-          <div style={{ color: "white" }}>{error}</div>
+          <div style={{ color: "white" }}>{`${error},`}</div>
         ))}
       </div>
       <form onSubmit={insertTrabajo} className="agregar-trabajo">
         <input
           type="file"
           accept="image/png, image/jpeg, image/jpg "
-          {...register("avatar", { required: true })}
+          {...register("avatar")}
         />
         <label style={{ color: "black" }} htmlFor="trabajo">
           Trabajo:
@@ -40,7 +43,7 @@ export const FormTrabajos = ({ titulo }) => {
         <input
           type="text"
           id="trabajo"
-          {...register("title", { required: true })}
+          {...register("title")}
           className="border-b-2 border-blue-500 border-t-0 border-r-0 border-l-0 focus:outline-none"
         />
         <label style={{ color: "black" }} htmlFor="descripcion">
@@ -49,7 +52,7 @@ export const FormTrabajos = ({ titulo }) => {
         <textarea
           id="descripcion"
           rows="10"
-          {...register("description", { required: true })}
+          {...register("description")}
           className="input-descripcion-trabajo"
         ></textarea>
 
@@ -59,6 +62,21 @@ export const FormTrabajos = ({ titulo }) => {
           </Button>
         </div>
       </form>
+      <Modal
+        /*El modal se muestra solo cuando addTrabajoExit sea true y no haya ningun error*/
+        show={addTrabajoExit && errors.length == 0}
+        onHide={() => setAddTrabajoExit(false)}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title style={{ color: "green" }}>Correcto</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Tu vacante se agrego con exito</Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={() => setAddTrabajoExit(false)}>
+            Cerrar
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };

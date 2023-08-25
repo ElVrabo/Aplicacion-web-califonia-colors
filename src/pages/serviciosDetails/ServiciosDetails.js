@@ -60,8 +60,8 @@ const ServiciosDetail = () => {
               />
             </div>
             {servicioSeleccionado.servicios.map((servicio) => (
-              <ol key={servicio}>
-                <li style={{ color: "black" }}>{`✅${servicio}`}</li>
+              <ol style={{ marginTop: "10px" }} key={servicio}>
+                <li style={{ color: "black" }}>{`✅ ${servicio}`}</li>
               </ol>
             ))}
             <div className="btns-details">

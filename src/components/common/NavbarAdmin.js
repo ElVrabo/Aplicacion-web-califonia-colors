@@ -2,6 +2,7 @@ import "./navbarAdmin.css";
 import { Link } from "react-router-dom";
 import {
   HOME,
+  PageAdmin,
   PageAdminViewPost,
   comentariosAdminPages,
   viewTrabajosAdmin,
@@ -14,6 +15,9 @@ const NavbarAdmin = () => {
   return (
     <nav className="container-nav-admin">
       <h7 style={{ color: "white" }}>Bienvenido {userData.nombre}</h7>
+      <Link style={{ color: "white", textDecoration: "none" }} to={PageAdmin}>
+        Inicio
+      </Link>
       <Link
         style={{ color: "white", textDecoration: "none" }}
         className="nav-link"
