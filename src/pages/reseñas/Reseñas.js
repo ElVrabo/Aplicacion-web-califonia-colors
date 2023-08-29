@@ -9,7 +9,6 @@ import Button from "react-bootstrap/Button";
 import { useForm } from "react-hook-form";
 
 export const Reseñas = () => {
-  const [commentError, setCommentError] = useState(false);
   const { register, handleSubmit, setValue } = useForm();
   const { listComments, getComments, createComments, errors } =
     useContext(ResenasContext);
@@ -20,10 +19,7 @@ export const Reseñas = () => {
   }, []);
 
   const insertComment = handleSubmit(async (data) => {
-    if (data.description === "" || data.description.length < 4) {
-      setCommentError(true);
-    }
-    await createComments(data);
+    createComments(data);
     setValue("description", "");
     /*Se llama aca igual la funcion para que cuando inserte un comentario
     se visualizen enseguida*/
@@ -36,6 +32,11 @@ export const Reseñas = () => {
         <Navegacion />
         <h1 style={{ marginTop: "10px" }}>No hay ningun comentario</h1>
         <div className="container-comentarios" id="comentarios">
+          <div style={{ backgroundColor: "red", borderRadius: "5px" }}>
+            {errors.map((error) => (
+              <div style={{ color: "white" }}>{error}</div>
+            ))}
+          </div>
           <form onSubmit={insertComment} className="formulario-comentarios">
             <input
               type="text"
@@ -47,23 +48,6 @@ export const Reseñas = () => {
               Insertar comentario
             </button>
           </form>
-          <Modal show={commentError} onHide={() => setCommentError(false)}>
-            <Modal.Header closeButton>
-              <Modal.Title style={{ color: "red" }}>¡Error!</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              <div>
-                {errors.map((error) => (
-                  <div>{error}</div>
-                ))}
-              </div>
-            </Modal.Body>
-            <Modal.Footer>
-              <Button variant="primary" onClick={() => setCommentError(false)}>
-                Cerrar
-              </Button>
-            </Modal.Footer>
-          </Modal>
         </div>
       </>
     );
@@ -89,7 +73,11 @@ export const Reseñas = () => {
             </div>
           );
         })}
-
+        <div style={{ backgroundColor: "red", borderRadius: "5px" }}>
+          {errors.map((error) => (
+            <div style={{ color: "white" }}>{error}</div>
+          ))}
+        </div>
         <form onSubmit={insertComment} className="formulario-comentarios">
           <input
             type="text"
@@ -101,23 +89,6 @@ export const Reseñas = () => {
             Insertar comentario
           </button>
         </form>
-        <Modal show={commentError} onHide={() => setCommentError(false)}>
-          <Modal.Header closeButton>
-            <Modal.Title style={{ color: "red" }}>¡Error!</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <div>
-              {errors.map((error) => (
-                <div>{error}</div>
-              ))}
-            </div>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="primary" onClick={() => setCommentError(false)}>
-              Cerrar
-            </Button>
-          </Modal.Footer>
-        </Modal>
       </div>
     </>
   );

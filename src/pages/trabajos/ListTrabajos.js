@@ -1,6 +1,7 @@
 import "./listTrabajos.css";
 import { Button } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
+import ImageVacantes from "../../assets/imageVacantes.jpg";
 
 export const ListTrabajos = ({ trabajo, showClick, textButton }) => {
   return (
@@ -16,7 +17,7 @@ export const ListTrabajos = ({ trabajo, showClick, textButton }) => {
       >
         <Card.Img
           variant="top"
-          src={`http://localhost:4000/${trabajo.avatar}`}
+          src={ImageVacantes}
           style={{ height: "200px" }}
         />
 

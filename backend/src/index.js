@@ -1,8 +1,8 @@
 import app from "./app.js";
-import { connectDB } from "./db.js";
 
 
-connectDB();
+
+
 /*process.env.PORT:*/
 
 /*Esto se refiere a una variable de entorno llamada PORT. Las variables de entorno son valores 

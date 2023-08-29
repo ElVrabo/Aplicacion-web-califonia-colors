@@ -21,7 +21,7 @@ export const ResenasContextProvider = ({ children }) => {
     try {
       const res = await createCommentsRequest(value);
     } catch (error) {
-      setErrors(error.response.data);
+    setErrors(error.response.data);
     }
   };
 

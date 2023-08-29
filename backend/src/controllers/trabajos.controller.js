@@ -17,9 +17,6 @@ export const createTrabajo = async (req, res) => {
       description,
       date,
     });
-    if (req.file) {
-      newTrabajo.avatar = req.file.filename;
-    }
     const saveTrabajo = await newTrabajo.save();
     res.json(saveTrabajo);
   } catch (error) {

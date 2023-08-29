@@ -1,6 +1,8 @@
 import path from "path";
 import multer from "multer";
 
+
+
 let storage = multer.diskStorage({
   destination: function (req, file, cb) {
     /*en una carpeta uploads que se debe crear dentro de la carpeta raiz (backend) 

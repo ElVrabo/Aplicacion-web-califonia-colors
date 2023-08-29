@@ -1,7 +1,7 @@
 import "./listPromociones.css";
 import { Button } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
-// import imageOferta from "../../assets/imageOferta.jpg";
+import ImageOferta from "../../assets/imageOferta.jpg";
 
 export const ListPromociones = ({ promotion, showClick, textButton }) => {
   return (
@@ -15,11 +15,7 @@ export const ListPromociones = ({ promotion, showClick, textButton }) => {
           justifyContent: "center",
         }}
       >
-        <Card.Img
-          variant="top"
-          src={`http://localhost:4000/${promotion.avatar}`}
-          style={{ height: "200px" }}
-        />
+        <Card.Img variant="top" src={ImageOferta} style={{ height: "200px" }} />
 
         <Card.Body
           style={{
